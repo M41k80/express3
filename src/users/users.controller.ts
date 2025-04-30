@@ -2,7 +2,7 @@ import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UserResponseDto } from './dto/user-response.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
-import { User, UserRole } from '../users/entities/user.entity';
+import { UserRole } from '../users/entities/user.entity';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -21,7 +21,7 @@ export class UsersController {
   @Get('all')
   async findAll(): Promise<UserResponseDto[]> {
     return this.usersService.findAll();
-  }
+  } 
   
   @ApiOperation({ summary: 'Buscar usuario por ID' })
   @ApiResponse({ status: 200, description: 'Usuario encontrado' })
