@@ -28,6 +28,7 @@ async function bootstrap() {
   await app.listen(process.env.PORT ?? 3000);
   console.log(`Server is running on port ${process.env.PORT ?? 3000}`);
   console.log(`Swagger docs available at http://localhost:${process.env.PORT ?? 3000}/api`);
+  console.log(`https://intelligent-delight-production.up.railway.app/api`);
   
 }
 bootstrap();
