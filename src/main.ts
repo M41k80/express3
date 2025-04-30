@@ -1,3 +1,8 @@
+if (typeof global.crypto === "undefined") {
+  // @ts-ignore
+  global.crypto = require("crypto");
+}
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -26,4 +31,3 @@ async function bootstrap() {
   
 }
 bootstrap();
-  
