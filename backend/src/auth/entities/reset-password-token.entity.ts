@@ -10,7 +10,7 @@ export class ResetPasswordToken {
   @ManyToOne(() => User, { eager: true })
   user: User;
 
-  @ApiProperty({ example: '1234567890' })
+  @ApiProperty({ example: '12advadv-34567-fvsf890' })
   @Column()
   token: string;
 
