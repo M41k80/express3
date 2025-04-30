@@ -28,5 +28,5 @@ export class HealthProfile {
   @ApiProperty({ example: 'femenino', enum: ['masculino', 'femenino', 'otro'] })
   genero: 'masculino' | 'femenino' | 'otro';
 
-  // Puedes agregar aquí más campos según lo que pida el front
+  // agregar más campos que pida el front
 }

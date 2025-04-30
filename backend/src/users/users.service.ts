@@ -14,7 +14,7 @@ export class UsersService {
   ) {}
   async findAll(): Promise<UserResponseDto[]> {
     const users = await this.userRepository.find();
-    // Mapea a UserResponseDto si es necesario (sin password)
+   
     return users.map(user => ({
       id: user.id,
       email: user.email,
