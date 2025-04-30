@@ -25,7 +25,7 @@ export class UsersController {
   
   @ApiOperation({ summary: 'Buscar usuario por ID' })
   @ApiResponse({ status: 200, description: 'Usuario encontrado' })
-  @ApiResponse({ status: 404, description: 'Usuario no  encontrado' })
+  @ApiResponse({ status: 404, description: 'Usuario no encontrado' })
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<UserResponseDto> {
     return this.usersService.findOneById(id);
