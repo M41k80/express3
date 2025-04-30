@@ -37,6 +37,7 @@ export class HealthController {
 
   @ApiOperation({ summary: 'Actualizar ficha de salud propia' })
   @ApiResponse({ status: 200, description: 'Ficha actualizada' })
+  @ApiResponse({ status: 404, description: 'Ficha no encontrada' })
   @Put('profile')
   async updateProfile(@Request() req: AuthRequest, @Body() dto: UpdateHealthProfileDto): Promise<HealthProfile> {
     const user = await this.userRepository.findOne({ where: { id: req.user.userId } });

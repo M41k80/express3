@@ -8,7 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import configuration from './config/configuration';
 import databaseConfig from './config/database.config';
 import { validationSchema } from './config/validation.schema';
-
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -26,6 +26,7 @@ import { validationSchema } from './config/validation.schema';
     }),
     UsersModule,
     AuthModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
