@@ -20,11 +20,11 @@ export default function LoginPage() {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false); // Estado para manejar la carga
+    const [loading, setLoading] = useState(false); 
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        setLoading(true); // Se activa cuando el envío empieza
+        setLoading(true); 
         try {
             const { data } = await axios.post<AuthResponse>(
                 'https://intelligent-delight-production.up.railway.app/auth/login',
