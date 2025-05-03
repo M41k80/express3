@@ -1,0 +1,117 @@
+'use client';
+
+import { useEffect, useState, useContext } from 'react';
+import api from '../utils/api';
+import DashboardCharts from '@/app/components/DashboardCharts';
+import WorkoutForm from '@/app/components/WorkoutForm';
+import WorkoutHistory from '@/app/components/WorkoutHistory';
+import Suggestions from '@/app/components/Suggestions';
+import WeightForm from '@/app/components/WeightForm';
+import { AuthContext } from '@/app/context/AuthContext';
+
+interface WorkoutData {
+    date: string;
+    exercise_name: string;
+    sets: number;
+    reps: number;
+    weight_kg: number;
+}
+
+interface WeightData {
+    date: string;
+    weight_kg: number;
+}
+
+export default function DashboardPage() {
+    const { userId } = useContext(AuthContext);
+    const [workoutData, setWorkoutData] = useState<WorkoutData[]>([]);
+    const [weightData, setWeightData] = useState<WeightData[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (!userId) return;
+
+        const fetchData = async () => {
+            try {
+                // 1) Historial de entrenamientos
+                const { data: wResp } = await api.get<{ history: WorkoutData[] }>('/workout/history', {
+                    params: { user_id: userId },
+                });
+                setWorkoutData(Array.isArray(wResp.history) ? wResp.history : []);
+
+                // 2) Historial real de peso
+                const { data: whResp } = await api.get<{ weightHistory: WeightData[] }>(
+                    `/weight-history/${userId}`
+                );
+                setWeightData(Array.isArray(whResp.weightHistory) ? whResp.weightHistory : []);
+            } catch (err) {
+                console.error('Error al cargar los datos del dashboard:', err);
+                setWorkoutData([]);  // fallback
+                setWeightData([]);   // fallback
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [userId]);
+
+    
+    if (loading) {
+        return <p className="p-6 text-gray-600">Cargando datos del dashboard…</p>;
+    }
+
+    const hasWorkouts = Array.isArray(workoutData) && workoutData.length > 0;
+    const hasWeights = Array.isArray(weightData) && weightData.length > 0;
+
+    return (
+        <div className="p-6 bg-gray-50 min-h-screen">
+            <h1 className="text-3xl font-bold mb-6 text-gray-800">Dashboard</h1>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <div className="space-y-6 lg:col-span-2">
+                    <div className="bg-white p-6 rounded-lg shadow">
+                        <h2 className="text-xl font-semibold mb-4 text-gray-700">
+                            Registrar Entrenamiento
+                        </h2>
+                        <WorkoutForm />
+                    </div>
+                    <div className="bg-white p-6 rounded-lg shadow">
+                        <h2 className="text-xl font-semibold mb-4 text-gray-700">
+                            Sugerencias Personalizadas
+                        </h2>
+                        <Suggestions />
+                    </div>
+                </div>
+
+                
+                <div className="bg-white p-6 rounded-lg shadow">
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">
+                        Historial de Entrenamientos
+                    </h2>
+                    <WorkoutHistory />
+                </div>
+
+                
+                <div className="bg-white p-6 rounded-lg shadow lg:col-span-3">
+                    <h2 className="text-xl font-semibold mb-4 text-gray-700">Registrar Peso</h2>
+                    <WeightForm />
+                </div>
+            </div>
+
+            
+            <div className="mt-10 bg-white p-6 rounded-lg shadow">
+                {hasWorkouts && hasWeights ? (
+                    <DashboardCharts workoutData={workoutData} weightData={weightData} />
+                ) : (
+                    <p className="text-gray-600">
+                        {!hasWorkouts
+                            ? 'No hay datos de entrenamiento para graficar.'
+                            : 'No hay historial de peso para graficar.'}
+                    </p>
+                )}
+            </div>
+        </div>
+    );
+}
