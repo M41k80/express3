@@ -1,21 +1,31 @@
 'use client'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import api from '@/app/utils/api'
+import { AuthContext } from '@/app/context/AuthContext'
 
-export default function MealHistory({ userId }: { userId: string }) {
+export default function MealHistory() {
+    const { userId } = useContext(AuthContext)
     const [meals, setMeals] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const fetchMeals = useCallback(async () => {
-        setLoading(true)
-        const res = await fetch(`/api/meals/history?user_id=${userId}`)
-        const data = await res.json()
-        setMeals(data || [])
-        setLoading(false)
-    }, [userId])
-
     useEffect(() => {
+        if (!userId) return
+
+        const fetchMeals = async () => {
+            setLoading(true)
+            try {
+                const res = await api.get('/meals/meals/history', {
+                    params: { user_id: userId }
+                })
+                setMeals(res.data || [])
+            } catch (error) {
+                console.error('Error al obtener historial de comidas:', error)
+            }
+            setLoading(false)
+        }
+
         fetchMeals()
-    }, [fetchMeals])
+    }, [userId])
 
     return (
         <div className="p-4 rounded-xl shadow bg-white space-y-2 max-w-md mx-auto">
@@ -27,10 +37,8 @@ export default function MealHistory({ userId }: { userId: string }) {
             ) : (
                 meals.map((meal, index) => (
                     <div key={index} className="border-b pb-2 text-blue-600">
-                        <p className="text-sm">
-                            {(meal as { date: string, meal_type: string }).date} - <strong>{(meal as { date: string, meal_type: string }).meal_type}</strong>
-                        </p>
-                        <p className="text-sm">{(meal as { foods: string }).foods}</p>
+                        <p className="text-sm">{(meal as {date: string, meal_type: string}).date} - <strong>{(meal as {date: string, meal_type: string}).meal_type}</strong></p>
+                        <p className="text-sm">{(meal as {foods: string}).foods}</p>
                     </div>
                 ))
             )}

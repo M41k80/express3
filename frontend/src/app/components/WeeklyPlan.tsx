@@ -1,30 +1,48 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef, useContext } from 'react'
+import api from '../utils/api'
+import jsPDF from 'jspdf'
+import html2canvas from 'html2canvas'
+import { AuthContext } from '@/app/context/AuthContext'
 
-export default function WeeklyPlan({ userId }: { userId: string }) {
+export default function WeeklyPlan() {
+    const { userId } = useContext(AuthContext)
     const [plan, setPlan] = useState('')
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
+    const planRef = useRef<HTMLDivElement>(null)
 
     const handleGeneratePlan = async () => {
+        if (!userId) return
         setLoading(true)
-        setPlan('')
         setMessage('')
+        setPlan('')
 
         try {
-            const res = await fetch(`/api/plan/weekly?user_id=${userId}`)
-            const data = await res.json()
-
-            if (data.plan) {
-                setPlan(data.plan)
-            } else {
-                setMessage(data.message || data.error || 'No se pudo generar el plan.')
+            const res = await api.get('/plan/weekly', {
+                params: { user_id: userId }
+            })
+            setPlan(res.data.plan || '')
+            if (!res.data.plan) {
+                setMessage(res.data.message || res.data.error || 'No se pudo generar el plan.')
             }
-        } catch {
+        } catch (err) {
+            console.error('Error generando plan:', err)
             setMessage('Error al generar el plan.')
         }
 
         setLoading(false)
+    }
+
+    const handleDownloadPDF = async () => {
+        if (!planRef.current) return
+        const canvas = await html2canvas(planRef.current)
+        const imgData = canvas.toDataURL('image/png')
+        const pdf = new jsPDF()
+        const width = pdf.internal.pageSize.getWidth()
+        const height = (canvas.height * width) / canvas.width
+        pdf.addImage(imgData, 'PNG', 0, 0, width, height)
+        pdf.save('plan_semanal.pdf')
     }
 
     return (
@@ -42,9 +60,17 @@ export default function WeeklyPlan({ userId }: { userId: string }) {
             {message && <p className="text-sm text-red-500">{message}</p>}
 
             {plan && (
-                <div className="whitespace-pre-wrap border rounded p-4 text-sm text-gray-800 bg-gray-50">
-                    {plan}
-                </div>
+                <>
+                    <div ref={planRef} className="whitespace-pre-wrap border rounded p-4 text-sm text-gray-800 bg-gray-50">
+                        {plan}
+                    </div>
+                    <button
+                        onClick={handleDownloadPDF}
+                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                    >
+                        Descargar en PDF
+                    </button>
+                </>
             )}
         </div>
     )

@@ -59,7 +59,7 @@ export default function DashboardPage() {
         fetchData();
     }, [userId]);
 
-    
+
     if (loading) {
         return <p className="p-6 text-gray-600">Cargando datos del dashboard…</p>;
     }
@@ -72,7 +72,7 @@ export default function DashboardPage() {
             <h1 className="text-3xl font-bold mb-6 text-gray-800">Dashboard</h1>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                
+
                 <div className="space-y-6 lg:col-span-2">
                     <div className="bg-white p-6 rounded-lg shadow">
                         <h2 className="text-xl font-semibold mb-4 text-gray-700">
@@ -81,8 +81,8 @@ export default function DashboardPage() {
                         <WorkoutForm />
                     </div>
                     <div className='grid gap-6'>
-                        {userId && <MealForm userId={userId} />}
-                        {userId && <MealHistory userId={userId.toString()} />}
+                        <MealForm />
+                        <MealHistory />
                     </div>
                     <div className="bg-white p-6 rounded-lg shadow">
                         <h2 className="text-xl font-semibold mb-4 text-gray-700">
@@ -92,23 +92,23 @@ export default function DashboardPage() {
                     </div>
                 </div>
 
-                
+
                 <div className="bg-white p-6 rounded-lg shadow">
                     <h2 className="text-xl font-semibold mb-4 text-gray-700">
                         Historial de Entrenamientos
                     </h2>
                     <WorkoutHistory />
-                    {userId && <WeeklyPlan userId={userId.toString()} />}
+                    <WeeklyPlan />
                 </div>
 
-                
+
                 <div className="bg-white p-6 rounded-lg shadow lg:col-span-3">
                     <h2 className="text-xl font-semibold mb-4 text-gray-700">Registrar Peso</h2>
                     <WeightForm />
                 </div>
             </div>
 
-            
+
             <div className="mt-10 bg-white p-6 rounded-lg shadow">
                 {hasWorkouts && hasWeights ? (
                     <DashboardCharts workoutData={workoutData} weightData={weightData} />
