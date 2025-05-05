@@ -8,6 +8,9 @@ import WorkoutHistory from '@/app/components/WorkoutHistory';
 import Suggestions from '@/app/components/Suggestions';
 import WeightForm from '@/app/components/WeightForm';
 import { AuthContext } from '@/app/context/AuthContext';
+import MealHistory from '@/app/components/MealHistory'
+import MealForm from '../components/MealForm';
+import WeeklyPlan from '@/app/components/WeeklyPlan';
 
 interface WorkoutData {
     date: string;
@@ -77,6 +80,10 @@ export default function DashboardPage() {
                         </h2>
                         <WorkoutForm />
                     </div>
+                    <div className='grid gap-6'>
+                        {userId && <MealForm userId={userId} />}
+                        {userId && <MealHistory userId={userId.toString()} />}
+                    </div>
                     <div className="bg-white p-6 rounded-lg shadow">
                         <h2 className="text-xl font-semibold mb-4 text-gray-700">
                             Sugerencias Personalizadas
@@ -91,6 +98,7 @@ export default function DashboardPage() {
                         Historial de Entrenamientos
                     </h2>
                     <WorkoutHistory />
+                    {userId && <WeeklyPlan userId={userId.toString()} />}
                 </div>
 
                 
