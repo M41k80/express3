@@ -5,7 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "../Footer/page";
-import LoginModal from "../../LoginModal/page";
+import LoginModal from "../LoginModal/page";
 
 
 const Hero = () => {
