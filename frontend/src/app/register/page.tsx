@@ -27,7 +27,7 @@ export default function RegisterPage() {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:8000/auth/register', formData);
+            const response = await axios.post('https://intelligent-delight-production.up.railway.app/auth/register', formData);
             console.log('Usuario registrado:', response.data);
             router.push('/login'); 
         } catch (err: unknown) {
