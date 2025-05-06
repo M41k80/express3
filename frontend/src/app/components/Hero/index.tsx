@@ -1,75 +1,15 @@
-"use client"
+"use client";
 
 import React from "react";
-import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import Footer from "../Footer/page";
-import LoginModal from "../LoginModal/page";
-import RegisterModal from "../RegisterModal/page";
+import Header from "../Header/page";
 
 const Hero = () => {
-
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
-    const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false)
-  
-    const openLoginModal = () => {
-      setIsLoginModalOpen(true)
-      setIsRegisterModalOpen(false)
-    }
-  
-    const openRegisterModal = () => {
-      setIsRegisterModalOpen(true)
-      setIsLoginModalOpen(false)
-    }
-  
-    const closeModals = () => {
-      setIsLoginModalOpen(false)
-      setIsRegisterModalOpen(false)
-    }
-
-    const handleRegisterSuccess = () => {
-        setIsRegisterModalOpen(false);
-        setIsLoginModalOpen(true); // Abre el modal de login
-      };
-
-
   return (
     <div className="min-h-screen bg-[#FEFFEF]">
       {/* Header Section */}
-      <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <div className="text-3xl font-bold text-green-600 ">
-          Balance<span className="text-black">IA</span>
-        </div>
-        <div className="hidden md:flex items-center space-x-8">
-          <Link href="#" className="text-black hover:text-green-500">
-            Nosotros
-          </Link>
-          <Link href="#" className="text-black hover:text-green-500">
-            Blog
-          </Link>
-          <Link href="#" className="text-black hover:text-green-500">
-            Contacto
-          </Link>
-          <Link href="#" className="text-black hover:text-green-500">
-            Términos
-          </Link>
-        </div>
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={openLoginModal}
-            className="px-5 py-2 rounded-full bg-white text-green-500 border border-green-500 hover:bg-green-50"
-          >
-            Iniciar sesión
-          </button>
-          <button
-            onClick={openRegisterModal}
-            className="px-5 py-2 rounded-full bg-green-600 text-white hover:bg-green-700"
-          >
-            Registrarse
-          </button>
-        </div>
-      </div>
+      <Header />
       {/* Hero Section */}
       <div className="container mx-auto px-4 relative overflow-hidden">
         <div className="flex flex-col md:flex-row items-center bg-[#FEFFEF] text-black">
@@ -102,10 +42,8 @@ const Hero = () => {
           />
         </div>
       </div>
-      
+
       {/* Modals for Login and Register */}
-      <LoginModal isOpen={isLoginModalOpen} onClose={closeModals} onSwitchToRegister={openRegisterModal} />
-      <RegisterModal isOpen={isRegisterModalOpen} onClose={closeModals} onSwitchToLogin={openLoginModal} onRegisterSuccess={handleRegisterSuccess}/>
 
       {/* Services Section */}
       <div className="bg-white">
