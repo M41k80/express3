@@ -1,9 +1,34 @@
+"use client"
+
 import React from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "../Footer/page";
+import LoginModal from "../../LoginModal/page";
+
 
 const Hero = () => {
+
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+    const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false)
+  
+    const openLoginModal = () => {
+      setIsLoginModalOpen(true)
+      setIsRegisterModalOpen(false)
+    }
+  
+    const openRegisterModal = () => {
+      setIsRegisterModalOpen(true)
+      setIsLoginModalOpen(false)
+    }
+  
+    const closeModals = () => {
+      setIsLoginModalOpen(false)
+      setIsRegisterModalOpen(false)
+    }
+
+
   return (
     <div className="min-h-screen bg-[#FEFFEF]">
       {/* Header Section */}
@@ -26,12 +51,12 @@ const Hero = () => {
           </Link>
         </div>
         <div className="flex items-center space-x-4">
-          <Link
-            href="/login"
+          <button
+            onClick={openLoginModal}
             className="px-5 py-2 rounded-full bg-white text-green-500 border border-green-500 hover:bg-green-50"
           >
             Iniciar sesión
-          </Link>
+          </button>
           <Link
             href="/register"
             className="px-5 py-2 rounded-full bg-green-600 text-white hover:bg-green-700"
@@ -72,6 +97,7 @@ const Hero = () => {
           />
         </div>
       </div>
+      <LoginModal isOpen={isLoginModalOpen} onClose={closeModals} onSwitchToRegister={openRegisterModal} />
       {/* Services Section */}
       <div className="bg-white">
         {/* Services Section Header */}
