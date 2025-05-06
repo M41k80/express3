@@ -121,7 +121,7 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: Logi
         <button className="mt-4 w-full bg-[#FEFFEF] flex items-center justify-center gap-2 border border-green-600 py-2 rounded-md hover:bg-green-50 transition duration-200 text-black">
           <Image
             src="/g-icon-green.svg"
-            alt="test health"
+            alt="Google Icon"
             width={20}
             height={20}
             className=""
