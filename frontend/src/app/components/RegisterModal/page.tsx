@@ -2,11 +2,18 @@
 
 import { useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-export default function RegisterPage() {
-  const router = useRouter();
+interface RegisterModalProps {
+    isOpen: boolean
+    onClose: () => void
+    onSwitchToLogin: () => void
+    onRegisterSuccess: () => void;
+  }
+
+
+export default function RegisterModal({ isOpen, onClose, onSwitchToLogin, onRegisterSuccess}: RegisterModalProps) {
+
 
   const [formData, setFormData] = useState({
     email: "",
@@ -33,7 +40,8 @@ export default function RegisterPage() {
         formData
       );
       console.log("Usuario registrado:", response.data);
-      router.push("/login");
+      onRegisterSuccess() // Llama al callback después de registrar exitosamente
+      
     } catch (err: unknown) {
       console.error(err);
       if (axios.isAxiosError(err) && err.response?.data?.detail) {
@@ -46,10 +54,19 @@ export default function RegisterPage() {
     }
   };
 
+  if (!isOpen) return null; // No renderizar si el modal no está abierto
+
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg w-full max-w-md p-6 relative">
-        <button className="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
+        {/* Loader */}
+       {loading && (
+        <div className="flex flex-col justify-center items-center absolute inset-0 bg-white z-10 rounded-lg">
+          <p className="mb-4 text-black text-base sm:text-lg">Registrando...</p>
+          <div className="animate-spin rounded-full h-32 w-32 border-[12px] border-green-600 border-t-green-500" />
+        </div>
+      )}
+        <button onClick={onClose} className="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
           x
         </button>
         <h2 className="text-xl font-semibold text-center mb-6 text-black">
@@ -140,7 +157,7 @@ export default function RegisterPage() {
 
         <div className="mt-6 text-center text-sm text-black">
           ¿Ya tienes una cuenta?{" "}
-          <button className="text-green-500 hover:text-green-600 font-medium">
+          <button onClick={onSwitchToLogin} className="text-green-500 hover:text-green-600 font-medium">
             Iniciar sesión
           </button>
         </div>

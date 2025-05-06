@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "../Footer/page";
 import LoginModal from "../LoginModal/page";
-
+import RegisterModal from "../RegisterModal/page";
 
 const Hero = () => {
 
@@ -27,6 +27,11 @@ const Hero = () => {
       setIsLoginModalOpen(false)
       setIsRegisterModalOpen(false)
     }
+
+    const handleRegisterSuccess = () => {
+        setIsRegisterModalOpen(false);
+        setIsLoginModalOpen(true); // Abre el modal de login
+      };
 
 
   return (
@@ -57,12 +62,12 @@ const Hero = () => {
           >
             Iniciar sesión
           </button>
-          <Link
-            href="/register"
+          <button
+            onClick={openRegisterModal}
             className="px-5 py-2 rounded-full bg-green-600 text-white hover:bg-green-700"
           >
             Registrarse
-          </Link>
+          </button>
         </div>
       </div>
       {/* Hero Section */}
@@ -97,7 +102,11 @@ const Hero = () => {
           />
         </div>
       </div>
+      
+      {/* Modals for Login and Register */}
       <LoginModal isOpen={isLoginModalOpen} onClose={closeModals} onSwitchToRegister={openRegisterModal} />
+      <RegisterModal isOpen={isRegisterModalOpen} onClose={closeModals} onSwitchToLogin={openLoginModal} onRegisterSuccess={handleRegisterSuccess}/>
+
       {/* Services Section */}
       <div className="bg-white">
         {/* Services Section Header */}

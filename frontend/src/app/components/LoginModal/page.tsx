@@ -30,7 +30,7 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: Logi
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  if (!isOpen) return null
+  if (!isOpen) return null // No renderizar si el modal no está abierto
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -52,7 +52,15 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: Logi
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      
       <div className="bg-white rounded-lg w-full max-w-md p-6 relative">
+        {/* Loader */}
+       {loading && (
+        <div className="flex flex-col justify-center items-center absolute inset-0 bg-white z-10 rounded-lg">
+          <p className="mb-4 text-black text-base sm:text-lg">Logeando...</p>
+          <div className="animate-spin rounded-full h-32 w-32 border-[12px] border-green-600 border-t-green-500" />
+        </div>
+      )}
       <button onClick={onClose} className="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
           X
         </button>
