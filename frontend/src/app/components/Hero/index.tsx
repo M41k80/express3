@@ -4,10 +4,10 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="min-h-screen bg-[#FEFFEF] flex flex-col">
+    <div className="min-h-screen bg-[#FEFFEF]">
       {/* Header Section */}
-      <div className="mt-4 flex justify-around text-black p-4 shadow-md">
-        <div className="font-bold text-green-600 text-3xl">
+      <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+        <div className="text-3xl font-bold text-green-600 ">
           Balance<span className="text-black">IA</span>
         </div>
         <div className="hidden md:flex items-center space-x-8">
@@ -25,18 +25,18 @@ const Hero = () => {
           </Link>
         </div>
         <div className="flex items-center space-x-4">
-          <a
+          <Link
             href="/login"
             className="px-5 py-2 rounded-full bg-white text-green-500 border border-green-500 hover:bg-green-50"
           >
             Iniciar sesión
-          </a>
-          <a
+          </Link>
+          <Link
             href="/register"
             className="px-5 py-2 rounded-full bg-green-600 text-white hover:bg-green-700"
           >
             Registrarse
-          </a>
+          </Link>
         </div>
       </div>
       {/* Hero Section */}
