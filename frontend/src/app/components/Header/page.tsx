@@ -2,12 +2,14 @@ import React, {useState} from "react";
 import Link from "next/link";
 import LoginModal from "../LoginModal/page";
 import RegisterModal from "../RegisterModal/page";
+import ProfileModal from "@/app/components/ProfileModal/page";
 
 
 const Header = () => {
 
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false)
+    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
   
     const openLoginModal = () => {
       setIsLoginModalOpen(true)
@@ -28,6 +30,11 @@ const Header = () => {
         setIsRegisterModalOpen(false);
         setIsLoginModalOpen(true); // Abre el modal de login
       };
+
+      const handleLoginSuccess = () => {
+        setIsLoginModalOpen(false)
+        setIsProfileModalOpen(true) // Abre el modal de profile
+      }
 
   return (
      <div className="container mx-auto px-4 py-6 flex justify-between items-center">
@@ -62,8 +69,10 @@ const Header = () => {
             Registrarse
           </button>
         </div>
-        <LoginModal isOpen={isLoginModalOpen} onClose={closeModals} onSwitchToRegister={openRegisterModal} />
+        {/*Modals */}
+        <LoginModal isOpen={isLoginModalOpen} onClose={closeModals} onSwitchToRegister={openRegisterModal} onLoginSuccess={handleLoginSuccess}/>
         <RegisterModal isOpen={isRegisterModalOpen} onClose={closeModals} onSwitchToLogin={openLoginModal} onRegisterSuccess={handleRegisterSuccess}/>
+        <ProfileModal isOpen={isProfileModalOpen} onClose={() => setIsProfileModalOpen(false)}/>
       </div>
   );
 }

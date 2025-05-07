@@ -1,6 +1,6 @@
 "use client";
 import { useState, useContext, ChangeEvent, FormEvent } from "react";
-import api from "../utils/api";
+import api from "../../utils/api";
 import { AuthContext } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
 
@@ -30,7 +30,12 @@ interface ProfileResponse {
   };
 }
 
-export default function ProfilePage() {
+interface HealthProfileModalProps {
+    isOpen: boolean
+    onClose: () => void
+  }
+
+export default function ProfileModal({ isOpen, onClose }: HealthProfileModalProps) {
   const { userId } = useContext(AuthContext);
   const router = useRouter();
   const [form, setForm] = useState<ProfileForm>({
@@ -64,6 +69,9 @@ export default function ProfilePage() {
     }));
   };
 
+  if (!isOpen) return null;
+  // Modal is open, render the content
+
   const handleGoalChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
     setForm((prev) => ({
@@ -86,11 +94,12 @@ export default function ProfilePage() {
     router.push("/plan"); // Redirige a la página de plan
   };
 
+
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 overflow-y-auto py-10">
       <div className="bg-white rounded-lg w-full max-w-2xl p-6 relative max-h-[90vh] overflow-y-auto">
-      <button className="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
-         X
+        <button onClick={onClose} className="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
+          X
         </button>
         <h2 className="text-xl font-semibold text-center mb-4 text-black">
           Perfil de Salud
@@ -384,7 +393,7 @@ export default function ProfilePage() {
               htmlFor="medical_conditions"
               className="block text-sm font-bold text-gray-700 mb-1"
             >
-              Condiciones médicas
+              Condiciones Médicas
             </label>
             <textarea
               name="medical_conditions"

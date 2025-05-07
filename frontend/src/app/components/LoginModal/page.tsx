@@ -1,7 +1,6 @@
 "use client";
 import { useState, useContext, FormEvent } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import { AuthContext } from "@/app/context/AuthContext";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,11 +20,12 @@ interface LoginModalProps {
   isOpen: boolean
   onClose: () => void
   onSwitchToRegister: () => void
+  onLoginSuccess: () => void
 }
 
-export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: LoginModalProps) {
+export default function LoginModal({ isOpen, onClose, onSwitchToRegister, onLoginSuccess }: LoginModalProps) {
   const { login } = useContext(AuthContext);
-  const router = useRouter();
+  // const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -41,7 +41,7 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister }: Logi
         { email, password }
       );
       login({ token: data.accessToken, user: data.user });
-      router.push("/profile");
+      onLoginSuccess()
     } catch (err) {
       console.error(err);
       alert("Credenciales inválidas");
