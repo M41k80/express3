@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, Alert } from 'react-native';
+import { View, Text, Button, StyleSheet, Alert, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../context/AuthContext';
 import { colors, fonts, spacing } from '../styles/theme';
@@ -24,29 +24,45 @@ const HomeScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Bienvenido</Text>
+            <Text style={styles.title}>Bienvenido a BalanceIA</Text>
+            
+            <View style={styles.logo}>
+                <Text style={styles.logoText}></Text>
+                <Image
+                    source={require('../assets/healthmodel.png')}
+                    style={{ width: 200, height: 200, marginLeft: 50 }}
+                />
+
+            </View>
 
             <View style={styles.button}>
-                <Button 
-                    title="Registrar Entrenamiento" 
-                    onPress={() => navigation.navigate('RegisterWorkout' as never)} 
+                <Button
+                    title="Registrar Entrenamiento"
+                    onPress={() => navigation.navigate('RegisterWorkout' as never)}
                     color={colors.primary}
                 />
             </View>
 
             <View style={styles.button}>
-                <Button 
-                    title="Registrar Comida" 
-                    onPress={() => navigation.navigate('RegisterMeal' as never)} 
+                <Button
+                    title="Registrar Comida"
+                    onPress={() => navigation.navigate('RegisterMeal' as never)}
+                    color={colors.primary}
+                />
+            </View>
+            <View style={styles.button}>
+                <Button
+                    title="Dashboard"
+                    onPress={() => navigation.navigate('Dashboard' as never)}
                     color={colors.primary}
                 />
             </View>
 
             <View style={styles.button}>
-                <Button 
-                    title="Cerrar sesión" 
-                    color="#d00" 
-                    onPress={handleLogout} 
+                <Button
+                    title="Cerrar sesión"
+                    color="#d00"
+                    onPress={handleLogout}
                 />
             </View>
         </View>
@@ -70,6 +86,21 @@ const styles = StyleSheet.create({
     },
     button: {
         marginVertical: spacing.small,
+    },
+    logo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: spacing.large,
+    },
+    logoText: {
+        fontSize: 24,
+        fontFamily: fonts.heading,
+        marginRight: spacing.medium,
+        color: colors.text,
+    },
+    logoImage: {
+        width: 100,
+        height: 100,
     },
 });
 

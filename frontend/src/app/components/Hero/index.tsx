@@ -22,7 +22,7 @@ const Hero = () => {
               IA que transforma <br />
               tu vida
             </h2>
-            <p className="text-gray-600 mb-8 max-w-md">
+            <p className="text-[#000000]/55 mb-8 font-lato font-semibold text-2xl mt-18 max-w-xl flex absolute">
               Registra tu peso, rutinas y objetivos; nuestra IA te entregará
               dietas y entrenamientos que evolucionan contigo.
             </p>
@@ -78,7 +78,7 @@ const Hero = () => {
         </div>
         {/* Services Cards */}
         <div className="w-full max-w-6xl mx-auto p-6 bg-white mt-10">
-          <div className="flex grid grid-cols-1 md:grid-cols-2 gap-8 text-black gap-7">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-black">
             <div className="bg-[#FEFFEF] rounded-3xl p-8 shadow-md flex flex-col items-center text-center">
               <Image
                 src="/inteligencia-emocional 1.svg"

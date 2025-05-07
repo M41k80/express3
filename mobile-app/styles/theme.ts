@@ -12,6 +12,8 @@ export const colors = {
 export const fonts = {
     heading: 'Nunito_700Bold',
     body: 'Lato_400Regular',
+    bold: 'Lato_700Bold',
+    title: 'Nunito_700Bold',
 };
 
 export const spacing = {
