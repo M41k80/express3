@@ -9,6 +9,7 @@ const RegisterMealScreen = () => {
     const { userId } = useAuth();
     const [mealType, setMealType] = useState('Desayuno');
     const [foods, setFoods] = useState('');
+    const [water, setWater] = useState('');
 
     const handleSubmit = async () => {
         if (!userId) {
@@ -24,6 +25,7 @@ const RegisterMealScreen = () => {
                 date: today,
                 meal_type: mealType,
                 foods: foods,
+                water: water,
             });
 
             Alert.alert('Éxito', 'Comida registrada');
@@ -50,7 +52,7 @@ const RegisterMealScreen = () => {
                     <Picker.Item label="Snack" value="Snack" />
                 </Picker>
             </View>
-            
+
 
             <Text style={styles.label}>Alimentos consumidos</Text>
             <TextInput
@@ -60,6 +62,15 @@ const RegisterMealScreen = () => {
                 onChangeText={setFoods}
                 multiline
             />
+            <View style={styles.waterContainer}>
+                <Text style={styles.label}>Agua (250ml)</Text>
+                <View style={styles.stepper}>
+                    <Text style={styles.stepperButton} onPress={() => setWater(prev => String(Math.max(0, Number(prev) - 1)))}>−</Text>
+                    <Text style={styles.waterValue}>{water} vasos</Text>
+                    <Text style={styles.stepperButton} onPress={() => setWater(prev => String(Math.min(100, Number(prev) + 1)))}>+</Text>
+                </View>
+            </View>
+
             <View style={styles.button}>
                 <Button title="Guardar" onPress={handleSubmit} color={colors.primary} />
             </View>
@@ -73,7 +84,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.background,
         padding: 50,
         paddingBottom: 50,
-        
+
     },
     label: {
         fontSize: 16,
@@ -105,6 +116,29 @@ const styles = StyleSheet.create({
     button: {
         marginTop: spacing.medium,
     },
+    waterContainer: {
+        marginTop: 16,
+    },
+    stepper: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#f2f2f2',
+        borderRadius: 8,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+    },
+    stepperButton: {
+        fontSize: 24,
+        color: colors.primary,
+        paddingHorizontal: 12,
+    },
+    waterValue: {
+        fontSize: 18,
+        fontFamily: fonts.body,
+        color: colors.text,
+    },
+
 });
 
 export default RegisterMealScreen;

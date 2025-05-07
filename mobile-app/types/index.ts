@@ -17,5 +17,7 @@ export interface MealLog {
     user_id: string;
     meal_type: string;
     foods: string;
+    water: number;
     date: string;
 }
+

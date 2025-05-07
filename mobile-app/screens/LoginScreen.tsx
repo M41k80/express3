@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Alert, StyleSheet, Text } from 'react-native';
+import { View, TextInput, Button, Alert, StyleSheet, Text, Image } from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../context/AuthContext';
 import { colors, fonts, spacing } from '../styles/theme';
+
+
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
@@ -38,6 +40,17 @@ const LoginScreen = () => {
 
     return (
         <View style={styles.container}>
+
+
+            <View style={styles.logo}>
+                <Text style={styles.logoText1}>Balance</Text><Text style={styles.logoText}>IA</Text>
+                <Image
+                    source={require('../assets/Logo.png')}
+                    style={{ width: 200, height: 200 , tintColor: colors.primary}}
+                />
+            </View>
+
+
             <Text style={styles.title}>Iniciar sesión</Text>
 
             <TextInput
@@ -88,6 +101,29 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: spacing.large,
+    },
+    logo: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginBottom: spacing.large,
+    },
+    logoText: {
+        fontSize: 24,
+        fontFamily: fonts.heading,
+        marginRight: spacing.medium,
+        color: colors.text,
+    },
+    logoText1: {
+        fontSize: 24,
+        fontFamily: fonts.heading,
+        marginRight: spacing.medium,
+        color: colors.primary,
+    },
+    logoImage: {
+        width: 100,
+        height: 100,
+        color: colors.danger,
+
     },
 });
 

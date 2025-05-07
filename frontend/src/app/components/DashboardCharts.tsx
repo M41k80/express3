@@ -31,7 +31,7 @@ const DashboardCharts = ({ workoutData, weightData }: { workoutData: WorkoutData
         }],
     };
 
-    // Gráfico de línea para el peso corporal
+    
     const lineChartData = {
         labels: weightData.map((w) => w.date),
         datasets: [{
