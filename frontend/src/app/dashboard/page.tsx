@@ -75,11 +75,27 @@ export default function DashboardPage() {
   return (
     <div className="flex p-6 bg-gray-50 min-h-screen">
       <Sidebar />
-      <>
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">Dashboard</h1>
+      <div className="w-screen">
+        <div className="mt-2 p-6">
+          {hasWorkouts && hasWeights ? (
+            <DashboardCharts
+              workoutData={workoutData}
+              weightData={weightData}
+            />
+          ) : (
+            <p className="text-gray-600">
+              {!hasWorkouts
+                ? "No hay datos de entrenamiento para graficar."
+                : "No hay historial de peso para graficar."}
+            </p>
+          )}
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="space-y-6 lg:col-span-2">
+        <div className="p-6">
+          <WorkoutHistory />
+          
+          <MealHistory />
+          {/* <div className="space-y-6 lg:col-span-2">
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4 text-gray-700">
                 Registrar Entrenamiento
@@ -97,38 +113,14 @@ export default function DashboardPage() {
               <Suggestions />
             </div>
           </div>
-
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              Historial de Entrenamientos
-            </h2>
-            <WorkoutHistory />
-            <WeeklyPlan />
-          </div>
-
           <div className="bg-white p-6 rounded-lg shadow lg:col-span-3">
             <h2 className="text-xl font-semibold mb-4 text-gray-700">
               Registrar Peso
             </h2>
             <WeightForm />
-          </div>
+          </div> */}
         </div>
-
-        <div className="mt-10 bg-white p-6 rounded-lg shadow">
-          {hasWorkouts && hasWeights ? (
-            <DashboardCharts
-              workoutData={workoutData}
-              weightData={weightData}
-            />
-          ) : (
-            <p className="text-gray-600">
-              {!hasWorkouts
-                ? "No hay datos de entrenamiento para graficar."
-                : "No hay historial de peso para graficar."}
-            </p>
-          )}
-        </div>
-      </>
+      </div>
     </div>
   );
 }
