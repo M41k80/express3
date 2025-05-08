@@ -110,13 +110,13 @@ const Navbar = () => {
           </a>
           <button
             onClick={openLoginModal}
-            className="bg-[#FEFFEF] text-[#3CA464] font-bold w-full px-6 py-2 rounded-2xl shadow-md"
+            className="bg-[#FEFFEF] text-[#3CA464] hover:opacity-90 cursor-pointer font-bold w-full px-6 py-2 rounded-2xl shadow-md"
           >
             Iniciar Sesión
           </button>
           <button
             onClick={openRegisterModal}
-            className="border-[1.78px] border-[#FEFFEF] text-[#FEFFEF] bg-[#3CA464] font-bold w-full px-6 py-2 rounded-2xl shadow-xs"
+            className="border-[1.78px] border-[#FEFFEF] hover:bg-[#329956] cursor-pointer text-[#FEFFEF] bg-[#3CA464] font-bold w-full px-6 py-2 rounded-2xl shadow-xs"
           >
             Registrarse
           </button>
