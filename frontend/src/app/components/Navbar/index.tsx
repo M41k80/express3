@@ -10,6 +10,7 @@ const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Scroll dinámico para cambiar el fondo del navbar
   useEffect(() => {
@@ -57,8 +58,16 @@ const Navbar = () => {
           <span className="text-[#1E1E1E]">AI</span>
         </div>
 
+        {/* Botón hamburguesa en mobile */}
+        <button
+          className="md:hidden text-[#3CA464] text-2xl cursor-pointer"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
+
         {/* Enlaces */}
-        <div className="hidden md:flex space-x-8 font-bold text-xl text-[#1E1E1E]">
+        <div className="hidden md:flex space-x-8 items-center font-bold text-xl text-[#1E1E1E]">
           <a href="#servicios" className="hover:text-[#3CA464] transition">
             Servicios
           </a>
@@ -71,23 +80,50 @@ const Navbar = () => {
         </div>
 
         {/* Botones de sesión */}
-        <div className="flex space-x-4">
+        <div className="hidden md:flex space-x-4">
           <button
             onClick={openLoginModal}
-            className="bg-[#FEFFEF] text-[#3CA464] font-medium px-4 py-2 rounded-full shadow-md hover:opacity-90 transition"
+            className="bg-[#FEFFEF] text-[#3CA464] cursor-pointer text-base font-bold px-6 rounded-2xl py-2 shadow-md hover:opacity-90 transition"
           >
             Iniciar Sesión
           </button>
           <button
             onClick={openRegisterModal}
-            className="border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#3CA464] transition"
+            className="border-[1.78px] border-[#FEFFEF] text-[#FEFFEF] bg-[#3CA464] cursor-pointer shadow-xs text-base font-bold px-6 rounded-2xl py-2 hover:bg-[#329956]  transition"
           >
             Registrarse
           </button>
         </div>
       </div>
 
-      {/* Modales */}
+      {/* Menú mobile */}
+      {menuOpen && (
+        <div className="md:hidden px-6 pb-4 pt-2 space-y-4 bg-[#FAFAE7] shadow-md flex flex-col">
+          <a href="#servicios" className="text-[#1E1E1E] hover:text-[#3CA464] font-bold">
+            Servicios
+          </a>
+          <a href="#crear-blog" className="text-[#1E1E1E] hover:text-[#3CA464]  font-bold">
+            Crear Blog
+          </a>
+          <a href="#nosotros" className="text-[#1E1E1E] hover:text-[#3CA464]  font-bold">
+            Nosotros
+          </a>
+          <button
+            onClick={openLoginModal}
+            className="bg-[#FEFFEF] text-[#3CA464] hover:opacity-90 cursor-pointer font-bold w-full px-6 py-2 rounded-2xl shadow-md"
+          >
+            Iniciar Sesión
+          </button>
+          <button
+            onClick={openRegisterModal}
+            className="border-[1.78px] border-[#FEFFEF] hover:bg-[#329956] cursor-pointer text-[#FEFFEF] bg-[#3CA464] font-bold w-full px-6 py-2 rounded-2xl shadow-xs"
+          >
+            Registrarse
+          </button>
+        </div>
+      )}
+
+      {/* Modales de accion */}
       <LoginModal
         isOpen={isLoginModalOpen}
         onClose={closeModals}
