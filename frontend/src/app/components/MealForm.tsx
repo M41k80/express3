@@ -10,6 +10,7 @@ export default function MealForm() {
     const [foods, setFoods] = useState('')
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
+    const [water, setWater] = useState(0)
 
     const handleSubmit = async () => {
         if (!userId || !date || !foods) return
@@ -21,7 +22,8 @@ export default function MealForm() {
                 user_id: userId,
                 date,
                 meal_type: mealType,
-                foods
+                foods,
+                water
             })
             setMessage(res.data.message || 'Comida registrada correctamente')
             setDate('')
@@ -51,7 +53,7 @@ export default function MealForm() {
                 {loading ? 'Registrando...' : 'Registrar comida'}
             </button>
 
-            {message && <p className="text-sm text-center mt-2">{message}</p>}
+            {message && <p className="text-sm text-center mt-2 text-gray-700">{message}</p>}
         </div>
     )
 }
