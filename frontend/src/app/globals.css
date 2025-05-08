@@ -24,3 +24,7 @@ body {
   color: var(--foreground);
   font-family: 'Nunito', sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
