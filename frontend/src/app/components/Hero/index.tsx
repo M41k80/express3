@@ -7,18 +7,18 @@ const Hero = () => {
     <section className="pt-28 md:pt-32 bg-[#FAFAE7] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-between relative z-10">
         {/* Texto */}
-        <div className="md:w-[55%] space-y-14 text-center md:text-left">
-          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-[#1E1E1E]">
+        <div className="md:w-[51%] space-y-32 text-center md:text-left">
+          <h1 className="text-5xl md:text-6xl font-extrabold leading text-[#1E1E1E] mb-5">
             Tu progreso, <br /> nuestra inspiración:
           </h1>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#3CA464]">
+          <h2 className="text-5xl md:text-6xl  mb-6 font-extrabold leading text-[#3CA464]">
             IA que transforma tu vida
           </h2>
-          <p className="text-[#3f3f3f] text-base leading-relaxed max-w-md mx-auto md:mx-0">
+          <p className="text-[#000000]/55 font-semibold mb-6 font-lato text-2xl leading max-w-xl mx-auto md:mx-0">
             Registra tu peso, rutinas y objetivos; nuestra IA te entregará
             dietas y entrenamientos que evolucionan contigo.
           </p>
-          <button className="bg-[#3CA464] text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-[#329956] transition">
+          <button className="bg-[#3CA464] text-white px-10 py-3 cursor-pointer text-lg rounded-3xl font-extrabold shadow-md hover:bg-[#329956] transition">
             Comenzar Ahora
           </button>
         </div>
