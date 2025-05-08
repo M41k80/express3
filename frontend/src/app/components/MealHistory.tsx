@@ -28,7 +28,7 @@ export default function MealHistory() {
   }, [userId]);
 
   return (
-    <div className="mt-4 rounded-xl">
+    <div className="mt-4 rounded-xl ">
       <h2 className="text-xl font-bold mb-4 text-gray-700">
         Historial de comidas
       </h2>
@@ -37,7 +37,7 @@ export default function MealHistory() {
       ) : meals.length === 0 ? (
         <p className="text-center text-gray-700">No hay comidas registradas.</p>
       ) : (
-        <ul className="mt-2 space-y-2 bg-[#FEFFEF] list-disc border p-8 rounded-lg text-gray-700">
+        <ul className="overflow-auto h-[20vh] mt-2 space-y-2 bg-[#FEFFEF] list-disc border pl-8 pt-4 pb-4 rounded-lg text-gray-700">
           {meals.map((meal, index) => (
             <li key={index} className="text-gray-900">
               <p className="text-sm">

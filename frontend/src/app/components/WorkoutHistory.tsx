@@ -40,7 +40,7 @@ export default function WorkoutHistory() {
                 Historial de Entrenamientos
             </h2>
             {error && <p className="text-red-500 mt-2">{error}</p>}
-            <ul className="mt-2 space-y-2 bg-[#FEFFEF] list-disc border p-8 rounded-lg text-gray-700">
+            <ul className="overflow-auto h-[20vh] mt-2 space-y-2 bg-[#FEFFEF] list-disc border pl-8 pt-4 pb-4 rounded-lg text-gray-700 ">
                 {history.map((item, i) => (
                     <li key={i} className="text-gray-900">
                         <strong>{item.date}</strong>: {item.exercise_name} – {item.sets}×
