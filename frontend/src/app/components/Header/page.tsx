@@ -37,34 +37,31 @@ const Header = () => {
       }
 
   return (
-     <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <div className="text-3xl font-bold text-green-600 ">
-          Balance<span className="text-black">IA</span>
+     <div className="container mx-auto px-4 py-8 flex justify-between items-center">
+        <div className="text-4xl font-extrabold text-[#3CA464]">
+          Balance<span className="text-[#1E1E1E]">AI</span>
         </div>
-        <div className="hidden md:flex items-center space-x-8 font-bold">
-          <Link href="#" className="text-black hover:text-green-500">
+        <div className="hidden md:flex items-center space-x-8 font-bold text-xl">
+          <Link href="/Servicios" className="text-[#1E1E1E] hover:text-[#3CA464]">
             Servicios
           </Link>
-          <Link href="#" className="text-black hover:text-green-500">
+          <Link href="/Crearblog" className="text-[#1E1E1E] hover:text-[#3CA464]">
             Crear Blog
           </Link>
-          <Link href="#" className="text-black hover:text-green-500">
+          <Link href="/Nosotros" className="text-[#1E1E1E] hover:text-[#3CA464]">
             Nosotros
-          </Link>
-          <Link href="#" className="text-black hover:text-green-500">
-          Términos
           </Link>
         </div>
         <div className="flex items-center space-x-4">
-          <button
+          <button 
             onClick={openLoginModal}
-            className="px-5 py-2 rounded-full bg-white text-green-500 border border-green-500 hover:bg-green-50"
+            className="px-7 py-2 rounded-full bg-[#FEFFEF] text-[#3CA464] font-bold text-base cursor-pointer shadow-md transition duration-300 ease-in-out"
           >
             Iniciar sesión
           </button>
           <button
             onClick={openRegisterModal}
-            className="px-5 py-2 rounded-full bg-green-600 text-white hover:bg-green-700"
+            className="px-7 py-2 rounded-full text-[#FEFFEF] border-2 border-[#FEFFEF] font-bold text-base cursor-pointer shadow-md  transition duration-300 ease-in-out"
           >
             Registrarse
           </button>
