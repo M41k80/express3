@@ -123,7 +123,7 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Modales */}
+      {/* Modales de accion */}
       <LoginModal
         isOpen={isLoginModalOpen}
         onClose={closeModals}
