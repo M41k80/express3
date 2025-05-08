@@ -61,7 +61,7 @@ const Header = () => {
           </button>
           <button
             onClick={openRegisterModal}
-            className="px-7 py-2 rounded-full text-[#FEFFEF] border-2 border-[#FEFFEF] font-bold text-base cursor-pointer shadow-md  transition duration-300 ease-in-out"
+            className="px-7 py-2 rounded-full text-[#3CA464] border-2 border-[#FEFFEF] font-bold text-base cursor-pointer shadow-md  transition duration-300 ease-in-out"
           >
             Registrarse
           </button>
