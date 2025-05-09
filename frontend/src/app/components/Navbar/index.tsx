@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import LoginModal from "../LoginModal/page";
 import RegisterModal from "../RegisterModal/page";
 import ProfileModal from "../ProfileModal/page";
+import Link from "next/link";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -54,8 +55,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="text-3xl font-extrabold">
-          <span className="text-[#3CA464]">Balance</span>
-          <span className="text-[#1E1E1E]">AI</span>
+          <Link href="/" className="text-[#3CA464]">Balance</Link>
+          <Link href="/" className="text-[#1E1E1E]">AI</Link>
         </div>
 
         {/* Botón hamburguesa en mobile */}
@@ -68,28 +69,28 @@ const Navbar = () => {
 
         {/* Enlaces */}
         <div className="hidden md:flex space-x-8 items-center font-bold text-xl text-[#1E1E1E]">
-          <a href="#servicios" className="hover:text-[#3CA464] transition">
+          <Link href="/#servicios" className="hover:text-[#3CA464] transition">
             Servicios
-          </a>
-          <a href="#crear-blog" className="hover:text-[#3CA464] transition">
+          </Link>
+          <Link href="/#crear-blog" className="hover:text-[#3CA464] transition">
             Crear Blog
-          </a>
-          <a href="#nosotros" className="hover:text-[#3CA464] transition">
+          </Link>
+          <Link href="/#nosotros" className="hover:text-[#3CA464] transition">
             Nosotros
-          </a>
+          </Link>
         </div>
 
         {/* Botones de sesión */}
         <div className="hidden md:flex space-x-4">
           <button
             onClick={openLoginModal}
-            className="bg-[#FEFFEF] text-[#3CA464] cursor-pointer text-base font-bold px-6 rounded-2xl py-2 shadow-md hover:opacity-90 transition"
+            className="bg-[#FEFFEF] text-[#3CA464] cursor-pointer text-base font-bold px-6 rounded-2xl py-2 shadow-md hover:opacity-90 transition-transform duration-300 ease-in-out hover:scale-[1.03]"
           >
             Iniciar Sesión
           </button>
           <button
             onClick={openRegisterModal}
-            className="border-[1.78px] border-[#FEFFEF] text-[#FEFFEF] bg-[#3CA464] cursor-pointer shadow-xs text-base font-bold px-6 rounded-2xl py-2 hover:bg-[#329956]  transition"
+            className="border-[1.78px] border-[#FEFFEF] text-[#FEFFEF] bg-[#3CA464] cursor-pointer shadow-xs text-base font-bold px-6 rounded-2xl py-2 hover:bg-[#329956] transition-transform duration-300 ease-in-out hover:scale-[1.03]"
           >
             Registrarse
           </button>

@@ -124,7 +124,7 @@ export default function BlogPage() {
           <button
             type="submit"
             disabled={creating}
-            className="bg-[#3CA464] cursor-pointer text-white px-10 py-2 font-extrabold text-base rounded-2xl hover:bg-[#329956] shadow-xl"
+            className="bg-[#3CA464] cursor-pointer text-white px-10 py-2 font-extrabold text-base rounded-2xl hover:bg-[#329956] shadow-xl transition-transform duration-300 ease-in-out hover:scale-[1.03]"
           >
             {creating ? "Creando..." : "Crear Blog"}
           </button>

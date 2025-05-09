@@ -12,13 +12,13 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-center">
           <h3 className="text-2xl font-bold mb-2">Home</h3>
           <div className="flex space-x-6 text-xl">
-            <Link href="#servicios" className="hover:underline">
+            <Link href="/#servicios" className="hover:underline">
               Servicios
             </Link>
-            <Link href="#crear-blog" className="hover:underline">
+            <Link href="/#crear-blog" className="hover:underline">
               Blog
             </Link>
-            <Link href="#nosotros" className="hover:underline">
+            <Link href="/#nosotros" className="hover:underline">
               Nosotros
             </Link>
           </div>

@@ -55,7 +55,7 @@ const Hero = () => {
           </p>
           <button
             onClick={openRegisterModal}
-            className="bg-[#3CA464] text-white px-8 py-3 mb-4 cursor-pointer text-base rounded-3xl font-extrabold shadow-lg hover:bg-[#329956] transition"
+            className="bg-[#3CA464] text-white px-8 py-3 mb-4 cursor-pointer text-base rounded-3xl font-extrabold shadow-lg hover:bg-[#329956] transition-transform duration-300 ease-in-out hover:scale-[1.03]"
           >
             Comenzar Ahora
           </button>

@@ -24,24 +24,23 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log(formData);
   };
 
   return (
-    <div className="min-h-screen bg-[#FEFFEF]">
+    <div className="min-h-screen mt-8">
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen py-12 px-4 bg-white">
-        <h1 className="text-3xl font-medium mb-8 text-center text-black">
+      <div className="flex flex-col items-center justify-center py-20 px-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#1E1E1E] mb-10 text-center">
           Contacto
         </h1>
 
-        <div className="w-full max-w-md bg-[#FEFFEF] rounded-lg p-8 shadow-sm text-black">
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
+        <div className="bg-[#FEFFEF] w-full max-w-xl p-12 rounded-3xl shadow-md border border-gray-300">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
               <label
                 htmlFor="nombre"
-                className="block text-sm font-medium mb-2"
+                className="block mb-1 text-lg font-lato font-medium text-[#1E1E1E]"
               >
                 Nombre
               </label>
@@ -51,15 +50,15 @@ const ContactForm = () => {
                 name="nombre"
                 value={formData.nombre}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded bg-[#FEFFEF]"
                 required
+                className="w-full p-2 border border-gray-400 rounded-md bg-[#FEFFEF] text-[#1E1E1E] focus:outline-none focus:ring-1 focus:ring-[#3CA464]"
               />
             </div>
 
-            <div className="mb-4">
+            <div>
               <label
                 htmlFor="correo"
-                className="block text-sm font-medium mb-2"
+                className="block mb-1 font-medium text-lg font-lato text-[#1E1E1E]"
               >
                 Correo electrónico
               </label>
@@ -69,15 +68,15 @@ const ContactForm = () => {
                 name="correo"
                 value={formData.correo}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded bg-[#FEFFEF]"
                 required
+                className="w-full p-2 border border-gray-400 rounded-md bg-[#FEFFEF] text-[#1E1E1E] focus:outline-none focus:ring-1 focus:ring-[#3CA464]"
               />
             </div>
 
-            <div className="mb-4">
+            <div>
               <label
                 htmlFor="asunto"
-                className="block text-sm font-medium mb-2"
+                className="block mb-1 text-lg font-lato font-medium text-[#1E1E1E]"
               >
                 Asunto
               </label>
@@ -87,15 +86,15 @@ const ContactForm = () => {
                 name="asunto"
                 value={formData.asunto}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded bg-[#FEFFEF]"
                 required
+                className="w-full p-2 border border-gray-400 rounded-md bg-[#FEFFEF] text-[#1E1E1E] focus:outline-none focus:ring-1 focus:ring-[#3CA464]"
               />
             </div>
 
-            <div className="mb-6">
+            <div>
               <label
                 htmlFor="mensaje"
-                className="block text-sm font-medium mb-2"
+                className="block mb-1 text-xlg font-lato font-medium text-[#1E1E1E]"
               >
                 Mensaje
               </label>
@@ -104,16 +103,16 @@ const ContactForm = () => {
                 name="mensaje"
                 value={formData.mensaje}
                 onChange={handleChange}
-                rows={5}
-                className="w-full p-2 border border-gray-300 rounded bg-[#FEFFEF]"
+                rows={4}
                 required
+                className="w-full p-2 border border-gray-400 rounded-md bg-[#FEFFEF] text-[#1E1E1E] resize-none focus:outline-none focus:ring-1 focus:ring-[#3CA464]"
               />
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center pt-2">
               <button
                 type="submit"
-                className="bg-green-600 hover:bg-green-700 text-white py-2 px-12 rounded transition-colors"
+                className="bg-[#3CA464] hover:bg-[#329956] cursor-pointer text-lg text-white font-semibold px-18 py-2 rounded-2xl transition-shadow shadow-md"
               >
                 Enviar
               </button>
