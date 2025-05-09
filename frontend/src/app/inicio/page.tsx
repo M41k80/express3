@@ -73,14 +73,14 @@ const Inicio = () => {
         {/* Encabezado */}
         <div className="flex justify-between items-start">
           <div>
-            <h1 className="text-xl md:text-3xl font-extrabold my-10 text-[#1E1E1E]">
+            <h1 className="text-2xl md:text-3xl font-extrabold my-10 text-[#1E1E1E]">
               Hola, <span className="text-[#3CA464]">{userName} 💪</span>
             </h1>
-            <p className="text-[#1E1E1E] font-lato font-semibold text-2xl mb-4">
+            <p className="text-[#1E1E1E] font-lato font-semibold text-lg md:text-2xl mb-4">
               Peso Actual:{" "}
               <span className="font-lato font-semibold">{pesoActual} kg.</span>
             </p>
-            <p className="text-[#3CA464] font-lato font-semibold text-2xl">
+            <p className="text-[#3CA464] font-lato font-semibold text-lg md:text-2xl">
               Peso Objetivo:{" "}
               <span className=" font-lato font-semibold">
                 {pesoObjetivo} kg.
@@ -96,9 +96,9 @@ const Inicio = () => {
           </div>
         </div>
 
-        <div className="flex flex-row gap-50 -mt-4">
+        <div className="flex md:flex-row flex-col md:gap-50 -mt-4">
           {/* Gráfico */}
-          <div className="mt-8 mb-8 w-xl">
+          <div className="mt-8 mb-8 md:w-xl w-xs">
             {weightData.length > 0 ? (
               <div className="mt-8 mb-8">
                 <WeightLineChart weightData={weightData} />
@@ -126,7 +126,7 @@ const Inicio = () => {
           </div>
         </div>
 
-        <div className="flex flex-row mt-6">
+        <div className="flex md:flex-row flex-col mt-6">
           {/* Consejos */}
           <div className="max-w-3xl -mt-10">
             <h3 className="text-2xl font-extrabold text-[#1E1E1E] mb-2">
