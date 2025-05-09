@@ -8,9 +8,9 @@ const WorkoutLogPage = () => {
       <Sidebar />
       <div className="w-full">
         <header className="py-6 px-8">
-        
+
           <div className="text-2xl font-bold text-[#1E1E1E] flex flex-row-reverse">
-          AI<span className="text-green-500">Balance</span>
+            AI<span className="text-green-500">Balance</span>
           </div>
         </header>
         <div className="px-8 py-6 max-w-2xl">
@@ -20,7 +20,7 @@ const WorkoutLogPage = () => {
           <WorkoutForm />
         </div>
       </div>
-       
+
     </div>
   );
 };

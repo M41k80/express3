@@ -9,6 +9,7 @@ const SuggestionsPage = () => {
     const router = useRouter();
     const [selectedCategory, setSelectedCategory] = useState<"training" | "nutrition" | null>(null)
 
+    
     const handleCategorySelect = (category: "training" | "nutrition") => {
       setSelectedCategory(category === selectedCategory ? null : category)
     }
