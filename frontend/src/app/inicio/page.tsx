@@ -3,9 +3,45 @@
 import Sidebar from "../components/Sidebar/page";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const Inicio = () => {
   const router = useRouter();
+
+  
+  const [userName, setUserName] = useState("");
+  const [pesoActual, setPesoActual] = useState("-");
+  const [pesoObjetivo, setPesoObjetivo] = useState("-");
+
+  useEffect(() => {
+    const nombre = localStorage.getItem("user_name") || "Usuario";
+    const userId = localStorage.getItem("user_id");
+    const token = localStorage.getItem("token");
+
+    setUserName(nombre);
+
+        if (userId) {
+      fetch(`https://backend-salud.onrender.com/profile/${userId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      })
+        .then(res => {
+          if (!res.ok) throw new Error("Error al obtener perfil");
+          return res.json();
+        })
+        .then(data => {
+          setPesoActual(data.weight_kg);
+          setPesoObjetivo(data.desired_weight_kg);
+        })
+        .catch(err => {
+          console.error("Error:", err.message);
+        });
+    }
+
+  }, []);
 
   return (
     <div className="flex bg-gray-50 min-h-screen font-lato">
@@ -16,13 +52,13 @@ const Inicio = () => {
         <div className="flex justify-between items-start">
           <div>
             <h1 className="text-xl md:text-2xl font-bold mb-2 text-[#1E1E1E]">
-              Hola, <span className="text-[#3CA464]">Luis Angel 💪</span>
+              Hola, <span className="text-[#3CA464]">{userName} 💪</span>
             </h1>
             <p className="text-[#1E1E1E] font-medium mb-1">
-              Peso Actual: <span className="font-normal">82 kg.</span>
+              Peso Actual: <span className="font-normal">{pesoActual} kg.</span>
             </p>
             <p className="text-[#3CA464] font-bold">
-              Peso Objetivo: <span className="font-normal">72 kg.</span>
+              Peso Objetivo: <span className="font-normal">{pesoObjetivo} kg.</span>
             </p>
           </div>
 
@@ -33,7 +69,10 @@ const Inicio = () => {
             >
               Ver Planes
             </button>
-            <button className="bg-[#3CA464] text-white font-bold text-sm px-6 py-2 rounded-full shadow-md hover:bg-[#2e8c54] transition">
+            <button 
+            onClick={() => router.push("/sugerencias")}
+            className="bg-[#3CA464] text-white font-bold text-sm px-6 py-2 rounded-full shadow-md hover:bg-[#2e8c54] transition">
+              
               Registrar Progreso
             </button>
           </div>
