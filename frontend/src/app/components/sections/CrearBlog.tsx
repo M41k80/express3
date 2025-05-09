@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import api from "../../utils/api";
 
 interface Blog {
@@ -58,51 +59,95 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-10">
-      <h1 className="text-4xl font-bold text-center text-blue-200">
-        Blog de Salud y Ejercicio
-      </h1>
+    <div className="max-w-5xl mx-auto space-y-10 px-6 md:px-0">
+      {/* Encabezado visual estilo prototipo */}
+      <div className="text-center space-y-6">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-[#1E1E1E] leading mx-auto max-w-5xl mb-8 px-4">
+          ¿Te gustaría descubrir cómo el{" "}
+          <span className="text-[#3CA464]">balance</span> puede impulsar una{" "}
+          <span className="text-[#3CA464]">vida saludable</span>?
+        </h1>
 
-      {/* aqui va el formulario para crear un nuevo blog */}
-      <form
-        onSubmit={handleCreateBlog}
-        className="bg-white p-6 rounded-lg shadow space-y-4"
-      >
-        <h2 className="text-2xl font-semibold text-gray-700">
-          Crear nuevo blog
+        <h2 className="text-2xl md:text-3xl font-lato font-extrabold text-[#1E1E1E]/55">
+          “Lana”, nuestra agente IA crea contenido para ti.
+        </h2>
+
+        {/* Contenido con imagen y texto */}
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between pt-6 px-4 gap-6">
+          {/* Texto */}
+          <div className="md:w-3/5 text-left space-y-4 text-[#1E1E1E]/55 font-lato text-lg md:text-2xl font-medium md:-mt-8">
+            <p>
+              Solo basta una idea, y <strong>Lana</strong> hará el resto:
+              generará un artículo completo con{" "}
+              <strong>títulos que cautivan</strong> y{" "}
+              <strong>contenido alineado a tu propósito</strong>.
+            </p>
+            <p>
+              Deja que <strong>Lana</strong> impulse tu curiosidad, amplíe tu
+              visión y te acerque cada vez más a{" "}
+              <span className="font-semibold">una vida plena</span> y en{" "}
+              <span className="text-[#3CA464] font-semibold">balance</span>.
+            </p>
+          </div>
+
+          {/* Imagen */}
+          <div className="md:w-2/5 flex justify-center">
+            <Image
+              src="/lana.png"
+              alt="Lana leyendo"
+              width={420}
+              height={420}
+              className="object-contain w-[280px] md:w-[420px] h-auto"
+              priority
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Formulario de creación */}
+      <form onSubmit={handleCreateBlog} className=" space-y-4 max-w-5xl -mt-10">
+        <h2 className="md:text-2xl text-lg font-extrabold text-[#1E1E1E]/55 font-lato">
+          Ingresa tu idea:
         </h2>
         <input
           type="text"
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
           placeholder="Ej: hipertrofia, ayuno, pérdida de grasa..."
-          className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-blue-700"
+          className="w-full border rounded-xl px-4 py-2 mb-7 focus:outline-none font-lato font-medium text-xl focus:ring-1 focus:ring-[#3CA464] text-[#1E1E1E]/75"
         />
-        <button
-          type="submit"
-          disabled={creating}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
-        >
-          {creating ? "Creando..." : "Crear Blog"}
-        </button>
-        {success && <p className="text-green-600">{success}</p>}
+
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            disabled={creating}
+            className="bg-[#3CA464] cursor-pointer text-white px-10 py-2 font-extrabold text-base rounded-2xl hover:bg-[#329956] shadow-xl"
+          >
+            {creating ? "Creando..." : "Crear Blog"}
+          </button>
+        </div>
+        {success && <p className="text-[#3CA464]">{success}</p>}
         {error && <p className="text-red-600">{error}</p>}
       </form>
 
-      {/* lista de los blogs */}
+      {/* Lista de blogs */}
       {loading ? (
         <p className="text-center">Cargando blogs...</p>
       ) : (
         blogs.map((blog) => (
           <div
             key={blog.id}
-            className="bg-white p-6 rounded-lg shadow space-y-2"
+            className="bg-[#FEFFEF] p-8 rounded-2xl shadow space-y-2 border-2 border-[#1E1E1E]/55"
           >
-            <h3 className="text-xl font-bold text-blue-700">{blog.title}</h3>
-            <p className="text-sm text-gray-500">
+            <h3 className="text-xl font-extrabold text-[#3CA464] font-lato">
+              {blog.title}
+            </h3>
+            <p className="text-lg italic text-[#1E1E1E]/55 font-lato">
               Publicado el {new Date(blog.created_at).toLocaleDateString()}
             </p>
-            <p className="text-gray-800 whitespace-pre-line">{blog.content}</p>
+            <p className="text-[#1E1E1E]/75 whitespace-pre-line font-medium text-xl font-lato">
+              {blog.content}
+            </p>
           </div>
         ))
       )}
