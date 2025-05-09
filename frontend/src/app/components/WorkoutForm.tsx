@@ -2,9 +2,13 @@
 import { useState, useContext } from "react";
 import api from "../utils/api";
 import { AuthContext } from "@/app/context/AuthContext";
+import LoadingSpinner from "./LoadingSpinner/page";
 
 export default function WorkoutForm() {
   const { userId } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
   const [form, setForm] = useState({
     exercise_name: "",
     sets: 0,
@@ -18,16 +22,22 @@ export default function WorkoutForm() {
   };
 
   const handleSubmit = async () => {
-    await api.post("workout/log", { ...form, user_id: userId });
-    alert("Entrenamiento registrado");
+    setLoading(true);
+    setMessage("");
+    try {
+      const res = await api.post("workout/log", { ...form, user_id: userId });
+      setMessage(res.data.message || "Entrenamiento registrado correctamente");
+    } catch (error) {
+      console.error("Error al registrar entrenamiento:", error);
+      setMessage("No se pudo registrar el entrenamiento");
+    }
+    setLoading(false);
   };
 
   return (
-    <div className="p-4 flex flex-col gap-2">
+    <div className="p-4 flex flex-col gap-2 text-black">
       {/* Section Title */}
-      <h2 className="text-xl font-bold mb-4 text-green-700">
-        Entrenamiento
-      </h2>
+      <h2 className="text-xl font-bold mb-4 text-green-700">Entrenamiento</h2>
       {/* Exercise Input */}
       <div className="space-y-2">
         <label className="block text-gray-700 font-medium mb-1">
@@ -89,15 +99,21 @@ export default function WorkoutForm() {
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
         />
       </div>
+      {message && (
+        <p className="text-sm text-center mt-2 text-gray-700">{message}</p>
+      )}
       {/* Submit Button */}
-      <div className="flex justify-center mt-8">
+      <div className="flex justify-center mt-5">
+
         <button
           onClick={handleSubmit}
-          className="mt-5 px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors"
+          disabled={loading}
+          className="mt-2 px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors"
         >
-          Registrar Entrenamiento
+          {loading ? "Registrando..." : "Registrar Entrenamiento"} 
         </button>
       </div>
+      <LoadingSpinner isOpen={loading} message="Registrando tu entrenamiento..." />
     </div>
   );
 }

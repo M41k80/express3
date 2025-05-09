@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation";
 
 const SuggestionsPage = () => {
     const router = useRouter();
-    // const [selectedCategory, setSelectedCategory] = useState<"training" | "nutrition" | null>(null)
+    const [selectedCategory, setSelectedCategory] = useState<"training" | "nutrition" | null>(null)
 
-    // const handleCategorySelect = (category: "training" | "nutrition") => {
-    //   setSelectedCategory(category === selectedCategory ? null : category)
-    // }
+    const handleCategorySelect = (category: "training" | "nutrition") => {
+      setSelectedCategory(category === selectedCategory ? null : category)
+    }
 
     const handleGoToWorkoutLog = () => {
         router.push("/suggestions/workoutlog"); // Redirige a la página de plan

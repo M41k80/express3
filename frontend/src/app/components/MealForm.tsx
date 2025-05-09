@@ -44,7 +44,6 @@ export default function MealForm() {
   return (
     <div className="p-4 bg-white max-w-md mx-auto space-y-4 text-gray-700 flex flex-col gap-2">
       <h2 className="text-xl font-bold mb-4 text-green-700">Alimentación</h2>
-
       <div>
         <label className="block text-gray-700 font-bold mb-1">Fecha</label>
         <input
