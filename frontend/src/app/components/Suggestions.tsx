@@ -2,6 +2,7 @@
 import { useState, useContext } from 'react';
 import api from '../utils/api';
 import { AuthContext } from '@/app/context/AuthContext';
+import ReactMarkdown from 'react-markdown';
 
 export default function Suggestions() {
     const { userId } = useContext(AuthContext);
@@ -13,13 +14,13 @@ export default function Suggestions() {
     };
 
     return (
-        <div className="mt-6">
-            <button onClick={handleGetSuggestions} className="btn bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 ">
+        <div className="flex flex-col gap-10 ml-25">
+            <button onClick={handleGetSuggestions} className="btn bg-green-500 text-white py-3 px-6 margin-left-auto rounded-full hover:bg-green-600 transition-colors mb-8">
                 Obtener Sugerencias
             </button>
             {suggestion && (
-                <div className="mt-4 p-4 bg-gray-100 rounded-lg whitespace-pre-wrap text-blue-700">
-                    {suggestion}
+                <div className="bg-[#FEFFEF] border border-yellow-100 p-6 text-black  max-h-[100vh] overflow-auto mb-8 w-full text-left">
+                    <ReactMarkdown>{suggestion}</ReactMarkdown>
                 </div>
             )}
         </div>

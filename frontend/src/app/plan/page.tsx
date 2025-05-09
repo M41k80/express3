@@ -59,8 +59,8 @@ export default function PlanPage() {
 
                 {/* Contenido principal */}
                 <div className="px-8 py-6 max-w-3xl mx-auto text-center">
-                    <h1 className="text-2xl font-bold mb-4">Genera tu plan semanal personalizado</h1>
-                    <p className="text-lg mb-8">Obtenlo basado en tu perfil y tus metas.</p>
+                    <h1 className="text-2xl font-bold mb-4">Planes de Entrenamiento y Comidas</h1>
+                    <p className="text-lg mb-8">Gracias a tu perfil de salud, hemos generado planes a tu medida que te ayudaran a alcanzar tus objetivos..</p>
 
                     {/* Botón generar */}
                     <button
@@ -74,7 +74,7 @@ export default function PlanPage() {
                     {/* Resultado del plan */}
                     {plan && (
                         <div className="text-left">
-                            <div className="bg-gray-100 p-6 rounded-2xl border border-gray-300 text-black whitespace-pre-wrap max-h-[60vh] overflow-auto mb-6">
+                            <div className="bg-[#FEFFEF] border border-yellow-100 p-6 text-black  max-h-[70vh] overflow-auto mb-8 w-full">
                                 <ReactMarkdown>{plan}</ReactMarkdown>
                             </div>
 

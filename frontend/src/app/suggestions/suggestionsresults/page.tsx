@@ -12,8 +12,16 @@ const SuggestionsResults = () => {
             AI<span className="text-green-500">Balance</span>
           </div>
         </header>
-        <Suggestions/>
-        Probando
+        <div className="px-8 py-6 max-w-2xl ">
+          <h1 className="text-2xl font-bold mt-8 mb-8 text-black">
+            Apartir de tu desempeño de hoy y tus habitos alimenticios, hemos preparado sugerencias que te permitiran sacar el maximo provecho a tu plan integral.
+          </h1>
+          <p className="text-lg mb-10">
+            Click, <span className="text-green-500 font-medium"> al boton verde</span>
+          </p>
+          <Suggestions/>
+        </div>
+        
       </div>
     </div>
   );

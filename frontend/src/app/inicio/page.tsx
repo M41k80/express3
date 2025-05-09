@@ -113,7 +113,7 @@ const Inicio = () => {
           <div className="flex flex-col gap-10 mt-45">
             <button
               className="bg-[#3CA464] text-white font-bold cursor-pointer text-base px-10 py-3 rounded-3xl shadow-md hover:bg-[#2e8c54] transition-transform duration-300 ease-in-out hover:scale-[1.03]"
-              onClick={() => router.push("/plans")}
+              onClick={() => router.push("/plan")}
             >
               Ver Planes
             </button>
