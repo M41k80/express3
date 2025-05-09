@@ -42,7 +42,7 @@ const Sidebar = () => {
           </Link>
 
           <Link
-            href="/plans"
+            href="/plan"
             className="hover:bg-[#FEFFEF] p-2 rounded-full cursor-pointer transform transition-transform duration-300 hover:scale-105"
           >
             <Image

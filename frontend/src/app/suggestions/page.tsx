@@ -27,9 +27,10 @@ const SuggestionsPage = () => {
     <div className="flex min-h-screen bg-white">
         <Sidebar />
         <main className="flex-1 pl-20 text-black">
-        <header className="py-6 px-8 flex justify-between items-center">
-          <div></div> {/* Empty div for spacing */}
-          <div className="text-2xl font-bold text-green-500">BalanceIA</div>
+        <header className="py-6 px-8">
+          <div className="text-2xl font-bold text-[#1E1E1E] flex flex-row-reverse">
+            AI<span className="text-green-500">Balance</span>
+          </div>
         </header>
 
         <div className="px-8 py-6 max-w-3xl mx-auto text-center">
