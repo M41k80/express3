@@ -40,7 +40,7 @@ export default function WorkoutForm() {
       <h2 className="text-xl font-bold mb-4 text-green-700">Entrenamiento</h2>
       {/* Exercise Input */}
       <div className="space-y-2">
-        <label className="block text-gray-700 font-medium mb-1">
+        <label className="block text-gray-700 font-bold mb-1">
           Ejercicio Realizado
         </label>
         <input
@@ -52,7 +52,7 @@ export default function WorkoutForm() {
       </div>
       {/* Sets Input */}
       <div className="space-y-2">
-        <label className="block text-gray-700 font-medium mb-1">
+        <label className="block text-gray-700 font-bold mb-1">
           Numero de series
         </label>
         <input
@@ -65,7 +65,7 @@ export default function WorkoutForm() {
       </div>
       {/* Reps Input */}
       <div className="space-y-2">
-        <label className="block text-gray-700 font-medium mb-1">
+        <label className="block text-gray-700 font-bold mb-1">
           Numero de Repeticiones
         </label>
         <input
@@ -78,7 +78,7 @@ export default function WorkoutForm() {
       </div>
       {/* Weight Input */}
       <div className="space-y-2">
-        <label className="block text-gray-700 font-medium mb-1">
+        <label className="block text-gray-700 font-bold mb-1">
           Cantidad de Peso (en Kg)
         </label>
         <input
@@ -91,7 +91,7 @@ export default function WorkoutForm() {
       </div>
       {/* Date Input */}
       <div className="space-y-2">
-        <label className="block text-gray-700 font-medium mb-1">Fecha</label>
+        <label className="block text-gray-700 font-bold mb-1">Fecha</label>
         <input
           name="date"
           type="date"
