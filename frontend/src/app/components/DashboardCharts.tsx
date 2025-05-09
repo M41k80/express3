@@ -48,7 +48,7 @@ const DashboardCharts = ({
       {
         label: "Repeticiones",
         data: workoutData.map((w) => w.reps),
-        backgroundColor: "rgb(128, 252, 138)",
+        backgroundColor: "rgb(60, 164, 100)",
         borderColor: "rgb(7, 121, 17)",
         borderWidth: 1,
       },
@@ -62,7 +62,7 @@ const DashboardCharts = ({
         label: "Peso Corporal (kg)",
         data: weightData.map((w) => w.weight_kg),
         fill: false,
-        borderColor: "rgb(7, 121, 17)",
+        borderColor: "rgb(60, 164, 100)",
         tension: 0.1,
       },
     ],

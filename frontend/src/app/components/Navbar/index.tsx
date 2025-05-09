@@ -5,6 +5,8 @@ import LoginModal from "../LoginModal/page";
 import RegisterModal from "../RegisterModal/page";
 import ProfileModal from "../ProfileModal/page";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -12,6 +14,9 @@ const Navbar = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isNewUser, setIsNewUser] = useState(false);
+  const router = useRouter();
+
 
   // Scroll dinámico para cambiar el fondo del navbar
   useEffect(() => {
@@ -38,13 +43,21 @@ const Navbar = () => {
 
   const handleRegisterSuccess = () => {
     setIsRegisterModalOpen(false);
-    setIsLoginModalOpen(true);
+    setIsNewUser(true);
+    setIsProfileModalOpen(true);
   };
+  
 
   const handleLoginSuccess = () => {
     setIsLoginModalOpen(false);
-    setIsProfileModalOpen(true);
+  
+    if (isNewUser) {
+      setIsProfileModalOpen(true);
+    } else {
+      router.push("/dashboard");
+    }
   };
+  
 
   return (
     <nav
