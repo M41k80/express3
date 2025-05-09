@@ -4,6 +4,7 @@ import Sidebar from "../components/Sidebar/page";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import WeightLineChart from "../components/WeightLineChart";
 
 const Inicio = () => {
   const router = useRouter();
@@ -11,6 +12,12 @@ const Inicio = () => {
   const [userName, setUserName] = useState("");
   const [pesoActual, setPesoActual] = useState("-");
   const [pesoObjetivo, setPesoObjetivo] = useState("-");
+  const [weightData, setWeightData] = useState<WeightData[]>([]);
+
+  interface WeightData {
+    date: string;
+    weight_kg: number;
+  }
 
   useEffect(() => {
     const nombre = localStorage.getItem("user_name") || "Usuario";
@@ -41,6 +48,23 @@ const Inicio = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const userId = localStorage.getItem("user_id");
+
+    if (userId) {
+      fetch(`https://backend-salud.onrender.com/weight-history/${userId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (Array.isArray(data.weightHistory)) {
+            setWeightData(data.weightHistory);
+          }
+        })
+        .catch((err) =>
+          console.error("Error al cargar evolución de peso:", err)
+        );
+    }
+  }, []);
+
   return (
     <div className="flex bg-gray-50 min-h-screen font-lato">
       <Sidebar />
@@ -64,12 +88,12 @@ const Inicio = () => {
           <div className="flex flex-col gap-4 mt-2">
             <button
               className="bg-[#3CA464] text-white font-bold text-sm px-6 py-2 rounded-full shadow-md hover:bg-[#2e8c54] transition"
-              onClick={() => router.push("/plan")}
+              onClick={() => router.push("/plans")}
             >
               Ver Planes
             </button>
             <button
-              onClick={() => router.push("/sugerencias")}
+              onClick={() => router.push("/suggestions")}
               className="bg-[#3CA464] text-white font-bold text-sm px-6 py-2 rounded-full shadow-md hover:bg-[#2e8c54] transition"
             >
               Registrar Progreso
@@ -78,14 +102,16 @@ const Inicio = () => {
         </div>
 
         {/* Gráfico */}
-        <div className="mt-6 mb-8">
-          <Image
-            src="/grafico-peso.png"
-            alt="Gráfico de peso"
-            width={500}
-            height={250}
-            className="rounded-xl border border-gray-200 shadow"
-          />
+        <div className="mt-8 mb-8 max-w-xl">
+          {weightData.length > 0 ? (
+            <div className="mt-8 mb-8">
+              <WeightLineChart weightData={weightData} />
+            </div>
+          ) : (
+            <p className="text-gray-500 text-sm mt-8 mb-8">
+              Aún no hay datos de peso para mostrar.
+            </p>
+          )}
         </div>
 
         {/* Consejos */}
