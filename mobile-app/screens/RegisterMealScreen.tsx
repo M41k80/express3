@@ -4,6 +4,7 @@ import { Picker } from '@react-native-picker/picker';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import { colors, fonts, spacing } from '../styles/theme';
+import { Pressable } from 'react-native';
 
 const RegisterMealScreen = () => {
     const { userId } = useAuth();
@@ -72,7 +73,9 @@ const RegisterMealScreen = () => {
             </View>
 
             <View style={styles.button}>
-                <Button title="Guardar" onPress={handleSubmit} color={colors.primary} />
+                <Pressable style={styles.customButton} onPress={handleSubmit}>
+                    <Text style={styles.customButtonText}>Registrar Entrenamiento</Text>
+                </Pressable>
             </View>
         </View>
     );
@@ -137,6 +140,23 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: fonts.body,
         color: colors.text,
+    },
+    customButton: {
+        backgroundColor: colors.primary,
+        paddingVertical: 14,
+        borderRadius: 25,
+        alignItems: 'center',
+        marginTop: spacing.large,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 3,
+    },
+    customButtonText: {
+        color: '#fff',
+        fontSize: 16,
+        fontFamily: fonts.bold,
     },
 
 });
