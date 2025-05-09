@@ -4,6 +4,7 @@ import axios from "axios";
 import { AuthContext } from "@/app/context/AuthContext";
 import Link from "next/link";
 import Image from "next/image";
+import { FiX } from "react-icons/fi";
 
 interface AuthResponse {
   accessToken: string;
@@ -17,20 +18,24 @@ interface AuthResponse {
 }
 
 interface LoginModalProps {
-  isOpen: boolean
-  onClose: () => void
-  onSwitchToRegister: () => void
-  onLoginSuccess: () => void
+  isOpen: boolean;
+  onClose: () => void;
+  onSwitchToRegister: () => void;
+  onLoginSuccess: () => void;
 }
 
-export default function LoginModal({ isOpen, onClose, onSwitchToRegister, onLoginSuccess }: LoginModalProps) {
+export default function LoginModal({
+  isOpen,
+  onClose,
+  onSwitchToRegister,
+  onLoginSuccess,
+}: LoginModalProps) {
   const { login } = useContext(AuthContext);
-  // const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  if (!isOpen) return null // No renderizar si el modal no está abierto
+  if (!isOpen) return null;
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -41,7 +46,7 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister, onLogi
         { email, password }
       );
       login({ token: data.accessToken, user: data.user });
-      onLoginSuccess()
+      onLoginSuccess();
     } catch (err) {
       console.error(err);
       alert("Credenciales inválidas");
@@ -51,94 +56,110 @@ export default function LoginModal({ isOpen, onClose, onSwitchToRegister, onLogi
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      
-      <div className="bg-white rounded-lg w-full max-w-md p-6 relative">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-[4px] flex items-center justify-center z-50 px-4 sm:px-6">
+      <div className="bg-white rounded-3xl w-full md:max-w-md max-w-sm px-12 sm:px-10 md:px-14 py-10 sm:py-12 md:py-14 relative shadow-xl">
         {/* Loader */}
-       {loading && (
-        <div className="flex flex-col justify-center items-center absolute inset-0 bg-white z-10 rounded-lg">
-          <p className="mb-4 text-black text-base sm:text-lg">Logeando...</p>
-          <div className="animate-spin rounded-full h-32 w-32 border-[12px] border-green-600 border-t-green-500" />
-        </div>
-      )}
-      <button onClick={onClose} className="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
-          X
+        {loading && (
+          <div className="flex flex-col justify-center items-center absolute inset-0 bg-white z-10 rounded-xl">
+            <p className="mb-4 text-black text-base sm:text-lg">Logeando...</p>
+            <div className="animate-spin rounded-full h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 border-[6px] sm:border-[8px] border-[#3CA464] border-t-[#3CA464]" />
+          </div>
+        )}
+
+        {/* Botón cerrar */}
+        <button
+          onClick={onClose}
+          aria-label="Cerrar"
+          className="absolute right-4 top-4 sm:right-6 sm:top-6 text-[#1E1E1E] transition-transform hover:scale-110 cursor-pointer"
+        >
+          <FiX size={23} />
         </button>
-        <h2 className="text-xl font-semibold text-center mb-6 text-black">
-          Iniciar sesión
+
+        {/* Título */}
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-[#1E1E1E]">
+          Iniciar Sesión
         </h2>
+
+        {/* Formulario */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
+          <div>
             <label
               htmlFor="email"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-sm sm:text-base text-[#1E1E1E] font-medium mb-1 font-lato"
             >
               Correo electrónico
             </label>
             <input
               id="email"
               type="email"
-              placeholder="Introduce tu correo"
+              placeholder="ejemplo@hotmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 text-gray-700"
+              className="w-full px-4 py-2 border font-lato border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3CA464] text-gray-700"
             />
           </div>
 
-          <div className="space-y-2">
+          <div>
             <div className="flex justify-between items-center">
               <label
                 htmlFor="password"
-                className="block text-gray-700 font-medium mb-2"
+                className="text-sm sm:text-base text-[#1E1E1E] font-medium font-lato"
               >
                 Contraseña
               </label>
               <Link
                 href="#"
-                className="text-sm text-green-500 hover:text-green-600"
+                className="text-xs sm:text-sm text-[#3CA464] hover:text-green-600 font-semibold font-lato"
               >
                 ¿Olvidaste tu contraseña?
               </Link>
             </div>
-
             <input
               id="password"
               type="password"
-              placeholder="Introduce tu contraseña"
+              placeholder="●●●●●●●"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 text-gray-700"
+              className="w-full px-4 py-2 mt-1 font-lato border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 text-gray-700"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-200"
+            className="w-full bg-[#3CA464] text-white font-lato py-2 rounded-lg hover:bg-[#329956] cursor-pointer transition duration-200 font-bold"
             disabled={loading}
           >
             {loading ? "Cargando..." : "Iniciar Sesión"}
           </button>
         </form>
-        <div className="mt-6 flex items-center">
-          <div className="flex-grow h-px bg-gray-300"></div>
+
+        {/* Separador */}
+        <div className="mt-6 flex items-center justify-center">
+          <hr className="flex-grow border-gray-300" />
           <span className="px-3 text-gray-500 text-sm">o</span>
-          <div className="flex-grow h-px bg-gray-300"></div>
+          <hr className="flex-grow border-gray-300" />
         </div>
-        <button className="mt-4 w-full bg-[#FEFFEF] flex items-center justify-center gap-2 border border-green-600 py-2 rounded-md hover:bg-green-50 transition duration-200 text-black">
+
+        {/* Botón Google */}
+        <button className="mt-4 w-full font-lato bg-[#FEFFEF] border border-[#3CA464] flex items-center justify-center gap-3 py-2 rounded-lg hover:bg-gray-50 cursor-pointer transition duration-200 text-black text-sm">
           <Image
             src="/g-icon-green.svg"
             alt="Google Icon"
             width={20}
             height={20}
-            className=""
           />
           Inicia sesión con Google
         </button>
-        <div className="mt-6 text-center text-sm text-black">
+
+        {/* Cambio a registro */}
+        <div className="mt-6 text-center font-lato text-sm text-[#1E1E1E]">
           ¿No tienes una cuenta?{" "}
-          <button onClick={onSwitchToRegister} className="text-green-500 hover:text-green-600 font-medium">
+          <button
+            onClick={onSwitchToRegister}
+            className="text-[#1E1E1E] hover:text-[#3CA464] font-lato font-semibold cursor-pointer underline ml-2"
+          >
             Crear cuenta
           </button>
         </div>
