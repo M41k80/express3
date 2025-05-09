@@ -1,7 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
+
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.clear(); 
+    router.push("/");
+   
+  };
+
   return (
     <aside className="mt-6 mb-6 w-20 md:w-20 sm:w-40 h-[70vh] md:h-[60vh] lg:h-[115vh] bg-[#A8D4B9] text-white flex flex-col p-4 rounded-full shadow-lg">
       <div className="flex items-center justify-center mb-4"></div>
@@ -79,7 +89,9 @@ const Sidebar = () => {
         </div>
 
         {/* Bottom logout icon */}
-        <button className="hover:bg-white p-2 rounded-full cursor-pointer transform transition-transform duration-300 hover:scale-105">
+        <button 
+        onClick={handleLogout}
+        className="hover:bg-white p-2 rounded-full cursor-pointer transform transition-transform duration-300 hover:scale-105">
           <Image
             src="/logout-icon.svg"
             alt="Cerrar sesión"
