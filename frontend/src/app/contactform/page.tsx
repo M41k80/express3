@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Header from "../components/Header/page";
 import Footer from "../components/Footer/page";
+import Navbar from "../components/Navbar";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +30,7 @@ const ContactForm = () => {
 
   return (
     <div className="min-h-screen bg-[#FEFFEF]">
-      <Header />
+      <Navbar />
       <div className="flex flex-col items-center justify-center min-h-screen py-12 px-4 bg-white">
         <h1 className="text-3xl font-medium mb-8 text-center text-black">
           Contacto
