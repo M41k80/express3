@@ -20,8 +20,11 @@ const SuggestionsPage = () => {
     const handleGoToNutrition = () => {
       router.push('/suggestions/nutrition')  
     };
-    
-    
+
+    const handleSuggestionsResults = () => {
+        router.push('/suggestions/suggestionsresults')  
+      };
+  
     
   return (
     <div className="flex min-h-screen bg-white">
@@ -89,10 +92,9 @@ const SuggestionsPage = () => {
 
           {/* Get Suggestions Button */}
           <button
-            className={`px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors ${
-              !selectedCategory ? "opacity-70 cursor-not-allowed" : ""
-            }`}
-            disabled={!selectedCategory}
+            className='px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors'
+            
+            onClick={handleSuggestionsResults}
           >
             Obtener Sugerencias
           </button>
