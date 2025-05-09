@@ -2,7 +2,6 @@
 
 import { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import Sidebar from '../components/Sidebar/page';
 import api from '../utils/api';
 import { AuthContext } from '@/app/context/AuthContext';
@@ -29,6 +28,7 @@ export default function PlanPage() {
     const { userId } = useContext(AuthContext);
     const [plan, setPlan] = useState<string>('');
     const [loading, setLoading] = useState(false);
+    // eslint-disable-next-line
     const router = useRouter();
 
     const handleGenerate = async () => {

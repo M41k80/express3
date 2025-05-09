@@ -4,11 +4,11 @@ import { useEffect, useState, useContext } from "react";
 import api from "../utils/api";
 import DashboardCharts from "@/app/components/DashboardCharts";
 import WorkoutHistory from "@/app/components/WorkoutHistory";
-import Suggestions from "@/app/components/Suggestions";
-import WeightForm from "@/app/components/WeightForm";
+
+
 import { AuthContext } from "@/app/context/AuthContext";
 import MealHistory from "@/app/components/MealHistory";
-import WeeklyPlan from "@/app/components/WeeklyPlan";
+
 import Sidebar from "../components/Sidebar/page";
 
 interface WorkoutData {
