@@ -105,7 +105,10 @@ export default function BlogPage() {
       </div>
 
       {/* Formulario de creación */}
-      <form onSubmit={handleCreateBlog} className="space-y-4 max-w-5xl md:-mt-10 -mt-6">
+      <form
+        onSubmit={handleCreateBlog}
+        className="space-y-4 max-w-5xl md:-mt-10 -mt-6"
+      >
         <h2 className="md:text-2xl text-lg font-extrabold text-[#1E1E1E]/55 font-lato">
           Ingresa tu idea:
         </h2>
