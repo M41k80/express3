@@ -66,78 +66,92 @@ const Inicio = () => {
   }, []);
 
   return (
-    <div className="flex bg-gray-50 min-h-screen font-lato">
+    <div className="flex bg-gray-50 min-h-screen">
       <Sidebar />
 
       <main className="flex-1 p-10 md:px-16 relative">
         {/* Encabezado */}
         <div className="flex justify-between items-start">
           <div>
-            <h1 className="text-xl md:text-2xl font-bold mb-2 text-[#1E1E1E]">
+            <h1 className="text-xl md:text-3xl font-extrabold my-10 text-[#1E1E1E]">
               Hola, <span className="text-[#3CA464]">{userName} 💪</span>
             </h1>
-            <p className="text-[#1E1E1E] font-medium mb-1">
-              Peso Actual: <span className="font-normal">{pesoActual} kg.</span>
+            <p className="text-[#1E1E1E] font-lato font-semibold text-2xl mb-4">
+              Peso Actual:{" "}
+              <span className="font-lato font-semibold">{pesoActual} kg.</span>
             </p>
-            <p className="text-[#3CA464] font-bold">
+            <p className="text-[#3CA464] font-lato font-semibold text-2xl">
               Peso Objetivo:{" "}
-              <span className="font-normal">{pesoObjetivo} kg.</span>
+              <span className=" font-lato font-semibold">
+                {pesoObjetivo} kg.
+              </span>
             </p>
           </div>
 
-          <div className="flex flex-col gap-4 mt-2">
+          {/* Logo */}
+          <div className="text-3xl font-extrabold justify-between">
+            <h2 className="text-[#3CA464]">
+              Balance<span className="text-[#1E1E1E]">AI</span>
+            </h2>
+          </div>
+        </div>
+
+        <div className="flex flex-row gap-50 -mt-4">
+          {/* Gráfico */}
+          <div className="mt-8 mb-8 w-xl">
+            {weightData.length > 0 ? (
+              <div className="mt-8 mb-8">
+                <WeightLineChart weightData={weightData} />
+              </div>
+            ) : (
+              <p className="text-gray-500 text-sm mt-8 mb-8">
+                Aún no hay datos de peso para mostrar.
+              </p>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-10 mt-45">
             <button
-              className="bg-[#3CA464] text-white font-bold text-sm px-6 py-2 rounded-full shadow-md hover:bg-[#2e8c54] transition"
+              className="bg-[#3CA464] text-white font-bold cursor-pointer text-base px-10 py-3 rounded-3xl shadow-md hover:bg-[#2e8c54] transition-transform duration-300 ease-in-out hover:scale-[1.03]"
               onClick={() => router.push("/plans")}
             >
               Ver Planes
             </button>
             <button
               onClick={() => router.push("/suggestions")}
-              className="bg-[#3CA464] text-white font-bold text-sm px-6 py-2 rounded-full shadow-md hover:bg-[#2e8c54] transition"
+              className="bg-[#3CA464] text-white font-bold cursor-pointer text-base px-10 py-3 rounded-3xl shadow-md hover:bg-[#2e8c54] transition-transform duration-300 ease-in-out hover:scale-[1.03]"
             >
               Registrar Progreso
             </button>
           </div>
         </div>
 
-        {/* Gráfico */}
-        <div className="mt-8 mb-8 max-w-xl">
-          {weightData.length > 0 ? (
-            <div className="mt-8 mb-8">
-              <WeightLineChart weightData={weightData} />
-            </div>
-          ) : (
-            <p className="text-gray-500 text-sm mt-8 mb-8">
-              Aún no hay datos de peso para mostrar.
+        <div className="flex flex-row mt-6">
+          {/* Consejos */}
+          <div className="max-w-3xl -mt-10">
+            <h3 className="text-2xl font-extrabold text-[#1E1E1E] mb-2">
+              Lana te ofrece los:{" "}
+              <span className="text-[#3CA464]">“Consejos del día”</span>
+            </h3>
+            <p className="text-[#1E1E1E]/55 mb-2 text-lg font-lato font-semibold">
+              Planifica tus comidas y entrenamientos como si fueran reuniones
+              importantes. Si están en tu agenda, se hacen.
             </p>
-          )}
-        </div>
+            <p className="text-[#1E1E1E]/55 text-lg font-lato font-semibold">
+              No esperes motivación. Diseña tu entorno para no fallar: ten
+              comida saludable lista y tu ropa de entrenamiento a la vista.
+            </p>
+          </div>
 
-        {/* Consejos */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm max-w-3xl">
-          <h3 className="text-lg font-bold text-[#1E1E1E] mb-2">
-            Lana te ofrece los:{" "}
-            <span className="text-[#3CA464]">“Consejos del día”</span>
-          </h3>
-          <p className="text-gray-600 mb-2 text-sm">
-            Planifica tus comidas y entrenamientos como si fueran reuniones
-            importantes. Si están en tu agenda, se hacen.
-          </p>
-          <p className="text-gray-600 text-sm">
-            No esperes motivación. Diseña tu entorno para no fallar: ten comida
-            saludable lista y tu ropa de entrenamiento a la vista.
-          </p>
-        </div>
-
-        {/* Imagen de Lana */}
-        <div className="absolute bottom-10 right-10 hidden md:block">
-          <Image
-            src="/lanasidebar.png"
-            alt="Lana - Asistente"
-            width={120}
-            height={120}
-          />
+          {/* Imagen de Lana */}
+          <div className="absolute bottom-10 right-30 hidden md:block transition-transform duration-300 ease-in-out hover:scale-[1.03]">
+            <Image
+              src="/lanasidebar.png"
+              alt="Lana - Asistente"
+              width={220}
+              height={220}
+            />
+          </div>
         </div>
       </main>
     </div>
