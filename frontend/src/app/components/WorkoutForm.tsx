@@ -1,29 +1,103 @@
-'use client';
-import { useState, useContext } from 'react';
-import api from '../utils/api';
-import { AuthContext } from '@/app/context/AuthContext';
+"use client";
+import { useState, useContext } from "react";
+import api from "../utils/api";
+import { AuthContext } from "@/app/context/AuthContext";
 
 export default function WorkoutForm() {
-    const { userId } = useContext(AuthContext);
-    const [form, setForm] = useState({ exercise_name: '', sets: 0, reps: 0, weight_kg: 0, date: '' });
+  const { userId } = useContext(AuthContext);
+  const [form, setForm] = useState({
+    exercise_name: "",
+    sets: 0,
+    reps: 0,
+    weight_kg: 0,
+    date: "",
+  });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-    const handleSubmit = async () => {
-        await api.post('workout/log', { ...form, user_id: userId });
-        alert('Entrenamiento registrado');
-    };
+  const handleSubmit = async () => {
+    await api.post("workout/log", { ...form, user_id: userId });
+    alert("Entrenamiento registrado");
+  };
 
-    return (
-        <div className="p-4 border rounded-lg shadow-md">
-            <input name="exercise_name" placeholder="Ejercicio" onChange={handleChange} className="input text-gray-900" />
-            <input name="sets" type="number" placeholder="Series" onChange={handleChange} className="input text-gray-900" />
-            <input name="reps" type="number" placeholder="Repeticiones" onChange={handleChange} className="input text-gray-900" />
-            <input name="weight_kg" type="number" placeholder="Peso (kg)" onChange={handleChange} className="input text-gray-900" />
-            <input name="date" type="date" onChange={handleChange} className="input text-gray-900" />
-            <button onClick={handleSubmit} className="btn mt-2 text-emerald-900">Registrar</button>
-        </div>
-    );
+  return (
+    <div className="p-4 flex flex-col gap-2">
+      {/* Section Title */}
+      <h2 className="text-xl font-bold mb-4 text-gray-700 text-green-700">
+        Entrenamiento
+      </h2>
+      {/* Exercise Input */}
+      <div className="space-y-2">
+        <label className="block text-gray-700 font-medium mb-1">
+          Ejercicio Realizado
+        </label>
+        <input
+          name="exercise_name"
+          placeholder="Ej: Sentadillas"
+          onChange={handleChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      {/* Sets Input */}
+      <div className="space-y-2">
+        <label className="block text-gray-700 font-medium mb-1">
+          Numero de series
+        </label>
+        <input
+          name="sets"
+          type="number"
+          placeholder="Ej: 3"
+          onChange={handleChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      {/* Reps Input */}
+      <div className="space-y-2">
+        <label className="block text-gray-700 font-medium mb-1">
+          Numero de Repeticiones
+        </label>
+        <input
+          name="reps"
+          type="number"
+          placeholder="Ej: 12"
+          onChange={handleChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      {/* Weight Input */}
+      <div className="space-y-2">
+        <label className="block text-gray-700 font-medium mb-1">
+          Cantidad de Peso (en Kg)
+        </label>
+        <input
+          name="weight_kg"
+          type="number"
+          placeholder="Ej: 50"
+          onChange={handleChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      {/* Date Input */}
+      <div className="space-y-2">
+        <label className="block text-gray-700 font-medium mb-1">Fecha</label>
+        <input
+          name="date"
+          type="date"
+          onChange={handleChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      {/* Submit Button */}
+      <div className="flex justify-center mt-8">
+        <button
+          onClick={handleSubmit}
+          className="mt-5 px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors "
+        >
+          Registrar Entrenamiento
+        </button>
+      </div>
+    </div>
+  );
 }
