@@ -3,7 +3,7 @@ import Hero from "./components/Hero";
 import Servicios from "./components/sections/Servicios";
 import BlogPage from "./components/sections/CrearBlog";
 import Nosotros from "./components/sections/Nosotros";
-
+import Footer from "./components/Footer/page";
 
 export default function HomePage() {
   return (
@@ -26,6 +26,8 @@ export default function HomePage() {
       <section id="nosotros">
         <Nosotros />
       </section>
+      {/* Footer fijo */}
+      <Footer/>
     </main>
   );
 }

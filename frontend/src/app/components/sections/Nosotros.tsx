@@ -48,8 +48,8 @@ const Nosotros = () => {
       </div>
 
       {/* Diferenciadores */}
-      <div className="space-y-4 pt-6">
-        <h2 className="text-2xl md:text-3xl text-center font-extrabold text-[#1E1E1E]">
+      <div className="space-y-4">
+        <h2 className="text-3xl md:text-5xl text-center font-extrabold text-[#1E1E1E]">
           ¿Qué nos hace <span className="text-[#3CA464]">diferentes</span>?
         </h2>
         <ul className="list-disc list-inside space-y-2 text-[#1E1E1E]/55 text-lg md:text-2xl font-lato font-medium leading">

@@ -99,13 +99,22 @@ const Navbar = () => {
       {/* Menú mobile */}
       {menuOpen && (
         <div className="md:hidden px-6 pb-4 pt-2 space-y-4 bg-[#FAFAE7] shadow-md flex flex-col">
-          <a href="#servicios" className="text-[#1E1E1E] hover:text-[#3CA464] font-bold">
+          <a
+            href="#servicios"
+            className="text-[#1E1E1E] hover:text-[#3CA464] font-bold"
+          >
             Servicios
           </a>
-          <a href="#crear-blog" className="text-[#1E1E1E] hover:text-[#3CA464]  font-bold">
+          <a
+            href="#crear-blog"
+            className="text-[#1E1E1E] hover:text-[#3CA464]  font-bold"
+          >
             Crear Blog
           </a>
-          <a href="#nosotros" className="text-[#1E1E1E] hover:text-[#3CA464]  font-bold">
+          <a
+            href="#nosotros"
+            className="text-[#1E1E1E] hover:text-[#3CA464]  font-bold"
+          >
             Nosotros
           </a>
           <button
