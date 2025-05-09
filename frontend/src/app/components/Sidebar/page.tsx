@@ -33,7 +33,7 @@ const Sidebar = () => {
           </div>
 
           <Link
-            href="/home"
+            href="/inicio"
             className="hover:bg-[#FEFFEF] p-2 rounded-full cursor-pointer transform transition-transform duration-300 hover:scale-105"
           >
             <Image src="/house-icon.svg" alt="Home" width={30} height={30} />
