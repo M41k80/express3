@@ -75,7 +75,7 @@ export default function BlogPage() {
         {/* Contenido con imagen y texto */}
         <div className="flex flex-col-reverse md:flex-row items-center justify-between pt-6 px-4 gap-6">
           {/* Texto */}
-          <div className="md:w-3/5 text-left space-y-4 text-[#1E1E1E]/55 font-lato text-lg md:text-2xl font-medium md:-mt-8">
+          <div className="md:w-3/5 w-full text-left space-y-4 text-[#1E1E1E]/55 font-lato text-base sm:text-lg md:text-2xl font-medium mt-4 md:-mt-8">
             <p>
               Solo basta una idea, y <strong>Lana</strong> hará el resto:
               generará un artículo completo con{" "}
@@ -91,13 +91,13 @@ export default function BlogPage() {
           </div>
 
           {/* Imagen */}
-          <div className="md:w-2/5 flex justify-center">
+          <div className="md:w-2/5 w-full flex justify-center">
             <Image
               src="/lana.png"
               alt="Lana leyendo"
               width={420}
               height={420}
-              className="object-contain w-[280px] md:w-[420px] h-auto"
+              className="object-contain w-full max-w-[280px] md:max-w-[420px] h-auto"
               priority
             />
           </div>
@@ -105,7 +105,7 @@ export default function BlogPage() {
       </div>
 
       {/* Formulario de creación */}
-      <form onSubmit={handleCreateBlog} className=" space-y-4 max-w-5xl -mt-10">
+      <form onSubmit={handleCreateBlog} className="space-y-4 max-w-5xl md:-mt-10 -mt-6">
         <h2 className="md:text-2xl text-lg font-extrabold text-[#1E1E1E]/55 font-lato">
           Ingresa tu idea:
         </h2>
@@ -114,7 +114,7 @@ export default function BlogPage() {
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
           placeholder="Ej: hipertrofia, ayuno, pérdida de grasa..."
-          className="w-full border rounded-xl px-4 py-2 mb-7 focus:outline-none font-lato font-medium text-xl focus:ring-1 focus:ring-[#3CA464] text-[#1E1E1E]/75"
+          className="w-full border rounded-xl px-4 py-2 mb-7 focus:outline-none font-lato font-medium md:text-xl focus:ring-1 focus:ring-[#3CA464] text-[#1E1E1E]/75"
         />
 
         <div className="flex justify-center">
@@ -126,8 +126,9 @@ export default function BlogPage() {
             {creating ? "Creando..." : "Crear Blog"}
           </button>
         </div>
-        {success && <p className="text-[#3CA464]">{success}</p>}
-        {error && <p className="text-red-600">{error}</p>}
+
+        {success && <p className="text-[#3CA464] text-center">{success}</p>}
+        {error && <p className="text-red-600 text-center">{error}</p>}
       </form>
 
       {/* Lista de blogs */}
@@ -145,7 +146,7 @@ export default function BlogPage() {
             <p className="text-lg italic text-[#1E1E1E]/55 font-lato">
               Publicado el {new Date(blog.created_at).toLocaleDateString()}
             </p>
-            <p className="text-[#1E1E1E]/75 whitespace-pre-line font-medium text-xl font-lato">
+            <p className="text-[#1E1E1E]/75 whitespace-pre-line font-medium text-xl font-lato break-words">
               {blog.content}
             </p>
           </div>
