@@ -18,4 +18,4 @@ interface LoadingSpinnerProps {
     )
   }
 
-  export default LoadingSpinner
+export default LoadingSpinner;

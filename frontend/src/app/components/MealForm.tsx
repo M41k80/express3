@@ -2,7 +2,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "@/app/context/AuthContext";
 import api from "@/app/utils/api";
-import LoadingSpinner  from "./LoadingSpinner/page";
+import LoadingSpinner  from "./LoadingSpinner/LoadingSpinner";
 
 export default function MealForm() {
 
