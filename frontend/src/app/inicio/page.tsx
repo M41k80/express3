@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 const Inicio = () => {
   const router = useRouter();
 
-  
   const [userName, setUserName] = useState("");
   const [pesoActual, setPesoActual] = useState("-");
   const [pesoObjetivo, setPesoObjetivo] = useState("-");
@@ -20,27 +19,26 @@ const Inicio = () => {
 
     setUserName(nombre);
 
-        if (userId) {
+    if (userId) {
       fetch(`https://backend-salud.onrender.com/profile/${userId}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
-        .then(res => {
+        .then((res) => {
           if (!res.ok) throw new Error("Error al obtener perfil");
           return res.json();
         })
-        .then(data => {
+        .then((data) => {
           setPesoActual(data.weight_kg);
           setPesoObjetivo(data.desired_weight_kg);
         })
-        .catch(err => {
+        .catch((err) => {
           console.error("Error:", err.message);
         });
     }
-
   }, []);
 
   return (
@@ -58,7 +56,8 @@ const Inicio = () => {
               Peso Actual: <span className="font-normal">{pesoActual} kg.</span>
             </p>
             <p className="text-[#3CA464] font-bold">
-              Peso Objetivo: <span className="font-normal">{pesoObjetivo} kg.</span>
+              Peso Objetivo:{" "}
+              <span className="font-normal">{pesoObjetivo} kg.</span>
             </p>
           </div>
 
@@ -69,10 +68,10 @@ const Inicio = () => {
             >
               Ver Planes
             </button>
-            <button 
-            onClick={() => router.push("/sugerencias")}
-            className="bg-[#3CA464] text-white font-bold text-sm px-6 py-2 rounded-full shadow-md hover:bg-[#2e8c54] transition">
-              
+            <button
+              onClick={() => router.push("/sugerencias")}
+              className="bg-[#3CA464] text-white font-bold text-sm px-6 py-2 rounded-full shadow-md hover:bg-[#2e8c54] transition"
+            >
               Registrar Progreso
             </button>
           </div>
