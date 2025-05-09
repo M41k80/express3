@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Footer from "../components/Footer/page";
+import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar";
 
 const ContactForm = () => {

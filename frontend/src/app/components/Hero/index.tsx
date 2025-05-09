@@ -2,10 +2,10 @@
 import Image from "next/image";
 import mujerFit from "/public/healthmodel.svg";
 import "@/app/globals.css";
-import RegisterModal from "../RegisterModal/page";
+import RegisterModal from "../RegisterModal/RegisterModal";
 import { useState } from "react";
-import LoginModal from "../LoginModal/page";
-import ProfileModal from "../ProfileModal/page";
+import LoginModal from "../LoginModal/LoginModal";
+import ProfileModal from "../ProfileModal/ProfileModal";
 
 const Hero = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);

@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react";
-import Sidebar from "../components/Sidebar/page";
+import Sidebar from "../components/Sidebar/Sidebar";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 

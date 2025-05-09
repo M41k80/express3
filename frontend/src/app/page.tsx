@@ -3,7 +3,7 @@ import Hero from "./components/Hero";
 import Servicios from "./components/sections/Servicios";
 import BlogPage from "./components/sections/CrearBlog";
 import Nosotros from "./components/sections/Nosotros";
-import Footer from "./components/Footer/page";
+import Footer from "./components/Footer/Footer";
 
 export default function HomePage() {
   return (

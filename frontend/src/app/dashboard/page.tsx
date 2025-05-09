@@ -9,7 +9,7 @@ import WorkoutHistory from "@/app/components/WorkoutHistory";
 import { AuthContext } from "@/app/context/AuthContext";
 import MealHistory from "@/app/components/MealHistory";
 
-import Sidebar from "../components/Sidebar/page";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 interface WorkoutData {
   date: string;

@@ -2,7 +2,7 @@
 
 import { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Sidebar from '../components/Sidebar/page';
+import Sidebar from '../components/Sidebar/Sidebar';
 import api from '../utils/api';
 import { AuthContext } from '@/app/context/AuthContext';
 import ReactMarkdown from 'react-markdown';

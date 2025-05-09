@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import LoginModal from "../LoginModal/page";
-import RegisterModal from "../RegisterModal/page";
-import ProfileModal from "../ProfileModal/page";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import ProfileModal from "../ProfileModal/ProfileModal";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 

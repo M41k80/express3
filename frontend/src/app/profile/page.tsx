@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Sidebar from "../components/Sidebar/page";
+import Sidebar from "../components/Sidebar/Sidebar";
 import Image from "next/image";
-import ProfileModal from "../components/ProfileModal/page";
-import UserModal from "../components/UserModal/page";
+import ProfileModal from "../components/ProfileModal/ProfileModal";
+import UserModal from "../components/UserModal/UserModal";
 
 export default function Profile() {
   const [showProfileModal, setShowProfileModal] = useState(false);

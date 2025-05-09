@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../../components/Sidebar/page";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import WorkoutForm from "@/app/components/WorkoutForm";
 
 const WorkoutLogPage = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../../components/Sidebar/page";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import MealForm from "@/app/components/MealForm";
 
 const NutritionPage = () => {
