@@ -3,14 +3,26 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar/page";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const SuggestionsPage = () => {
+    const router = useRouter();
+    // const [selectedCategory, setSelectedCategory] = useState<"training" | "nutrition" | null>(null)
 
-    const [selectedCategory, setSelectedCategory] = useState<"training" | "nutrition" | null>(null)
+    // const handleCategorySelect = (category: "training" | "nutrition") => {
+    //   setSelectedCategory(category === selectedCategory ? null : category)
+    // }
 
-    const handleCategorySelect = (category: "training" | "nutrition") => {
-      setSelectedCategory(category === selectedCategory ? null : category)
-    }
+    const handleGoToWorkoutLog = () => {
+        router.push("/suggestions/workoutlog"); // Redirige a la página de plan
+      };
+
+    const handleGoToNutrition = () => {
+      router.push('/suggestions/nutrition')  
+    };
+    
+    
+    
   return (
     <div className="flex min-h-screen bg-white">
         <Sidebar />
@@ -33,7 +45,8 @@ const SuggestionsPage = () => {
           <div className="flex flex-col gap-7 p-8 mb-10 ">
             {/* Training Category */}
             <button
-              onClick={() => handleCategorySelect("training")}
+            //   onClick={() => handleCategorySelect("training")}
+            onClick={handleGoToWorkoutLog}
               className={`flex flex-col items-center justify-center p-6 rounded-2xl transition-all ${
                 selectedCategory === "training"
                   ? "bg-green-100 border-2 border-green-500"
@@ -54,7 +67,8 @@ const SuggestionsPage = () => {
 
             {/* Nutrition Category */}
             <button
-              onClick={() => handleCategorySelect("nutrition")}
+            //   onClick={() => handleCategorySelect("nutrition")}
+            onClick={handleGoToNutrition}
               className={`flex flex-col items-center justify-center p-6 rounded-2xl transition-all ${
                 selectedCategory === "nutrition"
                   ? "bg-green-100 border-2 border-green-500"

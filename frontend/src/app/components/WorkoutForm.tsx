@@ -93,7 +93,7 @@ export default function WorkoutForm() {
       <div className="flex justify-center mt-8">
         <button
           onClick={handleSubmit}
-          className="mt-5 px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors "
+          className="mt-5 px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors"
         >
           Registrar Entrenamiento
         </button>
