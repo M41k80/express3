@@ -1,20 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { FiX } from "react-icons/fi";
 
 interface RegisterModalProps {
-    isOpen: boolean
-    onClose: () => void
-    onSwitchToLogin: () => void
-    onRegisterSuccess: () => void;
-  }
+  isOpen: boolean;
+  onClose: () => void;
+  onSwitchToLogin: () => void;
+  onRegisterSuccess: () => void;
+}
 
-
-export default function RegisterModal({ isOpen, onClose, onSwitchToLogin, onRegisterSuccess}: RegisterModalProps) {
-
-
+export default function RegisterModal({
+  isOpen,
+  onClose,
+  onSwitchToLogin,
+  onRegisterSuccess,
+}: RegisterModalProps) {
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -40,8 +43,7 @@ export default function RegisterModal({ isOpen, onClose, onSwitchToLogin, onRegi
         formData
       );
       console.log("Usuario registrado:", response.data);
-      onRegisterSuccess() // Llama al callback después de registrar exitosamente
-      
+      onRegisterSuccess();
     } catch (err: unknown) {
       console.error(err);
       if (axios.isAxiosError(err) && err.response?.data?.detail) {
@@ -54,112 +56,150 @@ export default function RegisterModal({ isOpen, onClose, onSwitchToLogin, onRegi
     }
   };
 
-  if (!isOpen) return null; // No renderizar si el modal no está abierto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg w-full max-w-md p-6 relative">
-        {/* Loader */}
-       {loading && (
-        <div className="flex flex-col justify-center items-center absolute inset-0 bg-white z-10 rounded-lg">
-          <p className="mb-4 text-black text-base sm:text-lg">Registrando...</p>
-          <div className="animate-spin rounded-full h-32 w-32 border-[12px] border-green-600 border-t-green-500" />
-        </div>
-      )}
-        <button onClick={onClose} className="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
-          x
-        </button>
-        <h2 className="text-xl font-semibold text-center mb-6 text-black">
-          Crear cuenta
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <label className="block font-medium text-gray-700">Nombre</label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Luis Angel"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 text-gray-700"
-            />
-          </div>
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-[4px] z-50 overflow-y-auto">
+      <div className="flex justify-center px-4 py-12">
+        <div className="bg-white rounded-3xl w-full md:max-w-md max-w-sm px-6 py-10 relative shadow-xl sm:px-12 sm:py-12">
+          {/* Loader */}
+          {loading && (
+            <div className="flex flex-col justify-center items-center absolute inset-0 bg-white z-10 rounded-xl">
+              <p className="mb-4 text-black text-base sm:text-lg">
+                Registrando...
+              </p>
+              <div className="animate-spin rounded-full h-20 w-20 md:h-24 md:w-24 border-[8px] border-[#3CA464] border-t-[#3CA464]" />
+            </div>
+          )}
 
-          <div className="space-y-2">
-            <label className="block font-medium text-gray-900">
-              Correo electrónico
-            </label>
-            <input
-              type="email"
-              name="email"
-              placeholder="tunombre@hotmail.com"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 text-gray-700"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="block font-medium text-gray-900">
-              Contraseña
-            </label>
-            <input
-              type="password"
-              name="password"
-              required
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 text-gray-700"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="block font-medium text-gray-900">
-              Repetir contraseña
-            </label>
-            <input
-              type="password"
-              name="confirmPassword"
-              required
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 text-gray-700"
-            />
-          </div>
-
-          {error && <p className="text-red-600 text-sm">{error}</p>}
-
+          {/* Botón cerrar */}
           <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-200"
+            onClick={onClose}
+            aria-label="Cerrar"
+            className="absolute right-4 top-4 sm:right-6 sm:top-6 text-[#1E1E1E] hover:scale-110 transition-transform cursor-pointer"
           >
-            {loading ? "Registrando..." : "Registrarse"}
+            <FiX size={23} />
           </button>
-        </form>
-        <div className="mt-6 flex items-center">
-          <div className="flex-grow h-px bg-gray-300"></div>
-          <span className="px-3 text-gray-500 text-sm">o</span>
-          <div className="flex-grow h-px bg-gray-300"></div>
-        </div>
-        <button className="mt-4 w-full bg-[#FEFFEF] flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-green-50 transition duration-200 text-black">
-          <Image
-            src="/g-icon-green.svg"
-            alt="Google Icon"
-            width={20}
-            height={20}
-            className=""
-          />
-          Registrarse con Google
-        </button>
 
-        <div className="mt-6 text-center text-sm text-black">
-          ¿Ya tienes una cuenta?{" "}
-          <button onClick={onSwitchToLogin} className="text-green-500 hover:text-green-600 font-medium">
-            Iniciar sesión
+          {/* Título */}
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-[#1E1E1E]">
+            Crear Cuenta
+          </h2>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Nombre */}
+            <div>
+              <label className="block font-medium text-sm sm:text-base text-[#1E1E1E] mb-1 font-lato">
+                Nombre
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Luis Angel"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border font-lato border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3CA464] text-gray-700"
+              />
+            </div>
+
+            {/* Correo */}
+            <div>
+              <label className="block font-medium text-sm sm:text-base text-[#1E1E1E] mb-1 font-lato">
+                Correo electrónico
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="ejemplo@hotmail.com"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border font-lato border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3CA464] text-gray-700"
+              />
+            </div>
+
+            {/* Contraseña */}
+            <div>
+              <label className="block font-medium text-sm sm:text-base text-[#1E1E1E] mb-1 font-lato">
+                Contraseña
+              </label>
+              <input
+                type="password"
+                name="password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border font-lato border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3CA464] text-gray-700"
+              />
+            </div>
+
+            {/* Repetir contraseña */}
+            <div>
+              <label className="block font-medium text-sm sm:text-base text-[#1E1E1E] mb-1 font-lato">
+                Confirmar Contraseña
+              </label>
+              <input
+                type="password"
+                name="confirmPassword"
+                required
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border font-lato border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3CA464] text-gray-700"
+              />
+            </div>
+
+            {error && <p className="text-red-600 text-sm font-lato">{error}</p>}
+
+            {/* Botón registro */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#3CA464] text-white font-lato py-2 rounded-lg hover:bg-[#329956] cursor-pointer transition duration-200 font-bold"
+            >
+              {loading ? "Registrando..." : "Registrarse"}
+            </button>
+          </form>
+
+          {/* Separador */}
+          <div className="mt-6 flex items-center justify-center">
+            <hr className="flex-grow border-gray-300" />
+            <span className="px-3 text-gray-500 text-sm">o</span>
+            <hr className="flex-grow border-gray-300" />
+          </div>
+
+          {/* Botón Google */}
+          <button className="mt-4 w-full font-lato bg-[#FEFFEF] border border-[#3CA464] flex items-center justify-center gap-3 py-2 rounded-lg hover:bg-gray-50 cursor-pointer transition duration-200 text-black text-sm">
+            <Image
+              src="/g-icon-green.svg"
+              alt="Google Icon"
+              width={20}
+              height={20}
+            />
+            Registrarse con Google
           </button>
+
+          {/* Cambio a login */}
+          <div className="mt-6 text-center font-lato text-sm text-[#1E1E1E]">
+            ¿Ya tienes una cuenta?{" "}
+            <button
+              onClick={onSwitchToLogin}
+              className="text-[#1E1E1E] hover:text-[#3CA464] font-lato font-semibold cursor-pointer underline ml-2"
+            >
+              Iniciar Sesión
+            </button>
+          </div>
         </div>
       </div>
     </div>
