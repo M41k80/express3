@@ -36,12 +36,21 @@ export default function RegisterModal({
     e.preventDefault();
     setError("");
     setLoading(true);
+    const startTime = Date.now(); // Marca inicio del tiempo
 
     try {
       const response = await axios.post(
         "https://intelligent-delight-production.up.railway.app/auth/register",
         formData
       );
+
+      const elapsed = Date.now() - startTime;
+      const minDelay = 2000; // 2 segundos
+
+      if (elapsed < minDelay) {
+        await new Promise((resolve) => setTimeout(resolve, minDelay - elapsed));
+      }
+
       console.log("Usuario registrado:", response.data);
       onRegisterSuccess();
     } catch (err: unknown) {

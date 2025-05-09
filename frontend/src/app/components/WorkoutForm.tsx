@@ -25,7 +25,7 @@ export default function WorkoutForm() {
   return (
     <div className="p-4 flex flex-col gap-2">
       {/* Section Title */}
-      <h2 className="text-xl font-bold mb-4 text-gray-700 text-green-700">
+      <h2 className="text-xl font-bold mb-4 text-green-700">
         Entrenamiento
       </h2>
       {/* Exercise Input */}

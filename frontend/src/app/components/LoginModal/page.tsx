@@ -40,18 +40,30 @@ export default function LoginModal({
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    const startTime = Date.now(); // ⏱️ Marca el tiempo inicial
+
     try {
       const { data } = await axios.post<AuthResponse>(
         "https://intelligent-delight-production.up.railway.app/auth/login",
         { email, password }
       );
+
+      // Tiempo real de la petición
+      const elapsed = Date.now() - startTime;
+      const minDelay = 2000; //  2 segundos de loading
+
+      // Espera si existe demora
+      if (elapsed < minDelay) {
+        await new Promise((resolve) => setTimeout(resolve, minDelay - elapsed));
+      }
+
       login({ token: data.accessToken, user: data.user });
       onLoginSuccess();
     } catch (err) {
       console.error(err);
       alert("Credenciales inválidas");
     } finally {
-      setLoading(false);
+      setLoading(false); // Ejecucion de loading
     }
   };
 
@@ -60,9 +72,11 @@ export default function LoginModal({
       <div className="bg-white rounded-3xl w-full md:max-w-md max-w-sm px-12 sm:px-10 md:px-14 py-10 sm:py-12 md:py-14 relative shadow-xl">
         {/* Loader */}
         {loading && (
-          <div className="flex flex-col justify-center items-center absolute inset-0 bg-white z-10 rounded-xl">
-            <p className="mb-4 text-black text-base sm:text-lg">Logeando...</p>
-            <div className="animate-spin rounded-full h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 border-[6px] sm:border-[8px] border-[#3CA464] border-t-[#3CA464]" />
+          <div className="flex flex-col justify-center rounded-4xl items-center absolute inset-0 bg-white z-10  max-w-lg">
+            <p className="mb-4 text-[#1E1E1E] md:text-2xl font-semibold sm:text-lg">
+              Iniciando Sesión...
+            </p>
+            <div className="animate-spin rounded-full h-12 w-12 md:h-32 md:w-32  md:border-[12px] border-[6px] border-[#A8D4B9] border-t-[#3CA464]" />
           </div>
         )}
 
