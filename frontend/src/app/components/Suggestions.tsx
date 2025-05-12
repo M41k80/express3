@@ -14,7 +14,7 @@ export default function Suggestions() {
     };
 
     return (
-        <div className="flex flex-col gap-10 ml-25">
+        <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-100">
             <button onClick={handleGetSuggestions} className="btn bg-green-500 text-white py-3 px-6 margin-left-auto rounded-full hover:bg-green-600 transition-colors mb-8">
                 Obtener Sugerencias
             </button>
