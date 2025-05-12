@@ -1,5 +1,5 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Navbar from "./components/Navbar/Navbar";
+import Hero from "./components/Hero/Hero";
 import Servicios from "./components/sections/Servicios";
 import BlogPage from "./components/sections/CrearBlog";
 import Nosotros from "./components/sections/Nosotros";
