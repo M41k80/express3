@@ -36,12 +36,10 @@ interface HealthProfileModalProps {
   onClose: () => void;
 }
 
-export default function ProfileModal({
-  isOpen,
-  onClose,
-}: HealthProfileModalProps) {
+export default function ProfileModal({ isOpen, onClose }: HealthProfileModalProps) {
   const { userId } = useContext(AuthContext);
   const router = useRouter();
+
   const [form, setForm] = useState<ProfileForm>({
     age: 0,
     gender: "",
@@ -55,37 +53,27 @@ export default function ProfileModal({
     medical_conditions: [],
     habits: "",
   });
-  const [result, setResult] = useState<ProfileResponse | null>(null);
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]:
-        name === "age" ||
-        name === "height_cm" ||
-        name === "weight_kg" ||
-        name === "desired_weight_kg"
-          ? Number(value)
-          : value,
-    }));
-  };
+  const [result, setResult] = useState<ProfileResponse | null>(null);
+  // eslint-disable-next-line
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
-  // Modal is open, render the content
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: ["age", "height_cm", "weight_kg", "desired_weight_kg"].includes(name)
+        ? Number(value)
+        : value,
+    }));
+  };
 
   const handleGoalChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
@@ -99,15 +87,25 @@ export default function ProfileModal({
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError(null);
     if (!userId) return alert("Usuario no autenticado");
+
     const payload = { user_id: userId, ...form };
-    const { data } = await api.post<ProfileResponse>("/profile/init", payload);
-    setResult(data);
+
+    try {
+      const { data } = await api.post<ProfileResponse>("/profile/init", payload);
+      setResult(data);
+    } catch (err) {
+      setError("Error al enviar los datos. Verifica que estén completos o intenta más tarde.");
+      console.error(err);
+    }
   };
 
   const handleGoToPlan = () => {
-    router.push("/plan"); // Redirige a la página de plan
+    router.push("/plan");
   };
+
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-[4px] z-50 overflow-y-auto">
@@ -487,3 +485,4 @@ export default function ProfileModal({
     </div>
   );
 }
+
