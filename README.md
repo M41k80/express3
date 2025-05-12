@@ -1,8 +1,9 @@
 # 🧠 BalanceIA
 
 **BalanceIA** es una plataforma inteligente de salud que combina inteligencia artificial con rutinas de ejercicio y alimentación personalizadas para ayudarte a llevar una vida más saludable y equilibrada.
-
-<img src="frontend/public/Logo-Balance-IA.png" alt="BalanceIA logo" width="200"/>
+Nuestra App impulsada por IA puede guiarte a una mejor alimentación combinada con rutinas de ejercicio.
+ • Objetivo principal: Brindar al usuario planes personalizados por medio de nuestra IA. Además cuenta con gráficos para evaluar tu progreso y con recomendaciones dinámicas para cambiar tu plan. 
+<img src="frontend/public/Logo-Balance-IA.png" alt="BalanceIA logo" width="500"/>
 
 ---
 
