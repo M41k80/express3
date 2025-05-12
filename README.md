@@ -61,14 +61,15 @@ npx run ios / npx run android
 
 ## 🧪 Despliegue
 
-### La web se desplego en Vercel
-### Un backend de Usuarios y Autenticacion en Railway
-### El backend de API desplegado en Render
-
+``` bash
+- La web se desplego en Vercel
+- Un backend de Usuarios y Autenticacion en Railway
+- El backend de API desplegado en Render
+```
 ## 🤝 Contribuciones
 
-## ¡Contribuciones, sugerencias y issues son bienvenidos!
-## Abre un PR o crea una issue para ayudarnos a mejorar.
+### ¡Contribuciones, sugerencias y issues son bienvenidos!
+### Abre un PR o crea una issue para ayudarnos a mejorar.
 
 ## 📸 Capturas
 
