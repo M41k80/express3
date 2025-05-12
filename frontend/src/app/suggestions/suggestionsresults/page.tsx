@@ -16,9 +16,7 @@ const SuggestionsResults = () => {
           <h1 className="text-2xl font-bold mt-8 mb-8 text-black">
             Apartir de tu desempeño de hoy y tus habitos alimenticios, hemos preparado sugerencias que te permitiran sacar el maximo provecho a tu plan integral.
           </h1>
-          <p className="text-lg mb-10">
-            Click, <span className="text-green-500 font-medium"> al boton verde</span>
-          </p>
+          
           <Suggestions/>
         </div>
         
