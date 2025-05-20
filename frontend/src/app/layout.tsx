@@ -27,7 +27,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: 'BalanceIA',
+  title: 'BalanceAI',
   description: 'BalanceIA es una plataforma inteligente...',
   keywords: ['BalanceIA', 'salud', 'alimentación saludable', 'ejercicio', 'inteligencia artificial', 'bienestar', 'vida equilibrada'],
   authors: [{ name: 'BalanceIA', url: 'https://balanceia.com' }],

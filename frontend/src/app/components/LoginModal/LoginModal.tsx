@@ -40,7 +40,7 @@ export default function LoginModal({
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const startTime = Date.now(); // ⏱️ Marca el tiempo inicial
+    const startTime = Date.now(); //Marca el tiempo inicial
 
     try {
       const { data } = await axios.post<AuthResponse>(

@@ -54,7 +54,7 @@ const Navbar = () => {
     if (isNewUser) {
       setIsProfileModalOpen(true);
     } else {
-      router.push("/dashboard");
+      router.push("/inicio");
     }
   };
   

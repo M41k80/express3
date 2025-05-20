@@ -52,7 +52,7 @@ const Footer = () => {
               width={20}
               height={20}
             />
-            <span>balanceIA@gmail.com</span>
+            <span>balanceai@gmail.com</span>
           </div>
           <div className="flex items-start gap-2 text-lg">
             <Image

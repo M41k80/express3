@@ -69,7 +69,7 @@ export default function BlogPage() {
         </h1>
 
         <h2 className="text-2xl md:text-3xl font-lato font-extrabold text-[#1E1E1E]/55">
-          “Lana”, nuestra agente IA crea contenido para ti.
+          “Lana”, nuestra agente AI crea contenido para ti.
         </h2>
 
         {/* Contenido con imagen y texto */}
