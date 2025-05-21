@@ -28,7 +28,7 @@ const SuggestionsPage = () => {
   
     
   return (
-    <div className="flex min-h-screen bg-white">
+    <div className="flex min-h-screen pl-6">
         <Sidebar />
         <main className="flex-1 pl-20 text-black">
         <header className="py-6 px-8">

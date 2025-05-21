@@ -71,7 +71,7 @@ export default function DashboardPage() {
   const hasWeights = Array.isArray(weightData) && weightData.length > 0;
 
   return (
-    <div className="flex p-6 bg-gray-50 min-h-screen">
+    <div className="flex pl-6 min-h-screen">
       <Sidebar />
       <div className="w-screen">
         <div className="mt-2 p-6">

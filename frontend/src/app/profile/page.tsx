@@ -11,7 +11,7 @@ export default function Profile() {
   const [showUserModal, setShowUserModal] = useState(false);
 
   return (
-    <div className="flex bg-gray-50 min-h-screen">
+    <div className="flex pl-6 min-h-screen">
       <Sidebar />
 
       <main className="flex-1 flex flex-col pt-10 px-6 md:px-16">

@@ -66,7 +66,7 @@ const Inicio = () => {
   }, []);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex pl-6 min-h-screen">
       <Sidebar />
 
       <main className="flex-1 p-10 md:px-16 relative">
