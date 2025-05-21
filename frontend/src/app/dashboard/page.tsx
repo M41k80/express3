@@ -5,7 +5,6 @@ import api from "../utils/api";
 import DashboardCharts from "@/app/components/DashboardCharts";
 import WorkoutHistory from "@/app/components/WorkoutHistory";
 
-
 import { AuthContext } from "@/app/context/AuthContext";
 import MealHistory from "@/app/components/MealHistory";
 
@@ -74,7 +73,7 @@ export default function DashboardPage() {
     <div className="flex pl-6 min-h-screen">
       <Sidebar />
       <main className="flex-1 p-10 md:px-16 relative">
-                {/* Header */}
+        {/* Header */}
         <div className="flex justify-between items-end">
           <div></div>
           {/* Logo */}
@@ -84,52 +83,28 @@ export default function DashboardPage() {
             </h2>
           </div>
         </div>
-      <div>
-        <div className="mt-2 p-6">
-          {hasWorkouts && hasWeights ? (
-            <DashboardCharts
-              workoutData={workoutData}
-              weightData={weightData}
-            />
-          ) : (
-            <p className="text-[#1E1E1E]/55">
-              {!hasWorkouts
-                ? "No hay datos de entrenamiento para graficar."
-                : "No hay historial de peso para graficar."}
-            </p>
-          )}
-        </div>
-
-        <div className="p-6">
-          <WorkoutHistory />
-          
-          <MealHistory />
-          {/* <div className="space-y-6 lg:col-span-2">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-xl font-semibold mb-4 text-gray-700">
-                Registrar Entrenamiento
-              </h2>
-              <WorkoutForm />
-            </div>
-            <div className="grid gap-6">
-              <MealForm />
-              <MealHistory />
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-xl font-semibold mb-4 text-gray-700">
-                Sugerencias Personalizadas
-              </h2>
-              <Suggestions />
-            </div>
+        <div>
+          <div className="mt-2 p-6">
+            {hasWorkouts && hasWeights ? (
+              <DashboardCharts
+                workoutData={workoutData}
+                weightData={weightData}
+              />
+            ) : (
+              <p className="text-[#1E1E1E]/55">
+                {!hasWorkouts
+                  ? "No hay datos de entrenamiento para graficar."
+                  : "No hay historial de peso para graficar."}
+              </p>
+            )}
           </div>
-          <div className="bg-white p-6 rounded-lg shadow lg:col-span-3">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              Registrar Peso
-            </h2>
-            <WeightForm />
-          </div> */}
+
+          <div className="p-6">
+            <WorkoutHistory />
+
+            <MealHistory />
+          </div>
         </div>
-      </div>
       </main>
     </div>
   );
