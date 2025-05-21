@@ -4,23 +4,27 @@ import WorkoutForm from "@/app/components/WorkoutForm";
 
 const WorkoutLogPage = () => {
   return (
-    <div className="flex min-h-screen bg-white">
+    <div className="flex pl-6 min-h-screen">
       <Sidebar />
-      <div className="w-full">
-        <header className="py-6 px-8">
-
-          <div className="text-2xl font-bold text-[#1E1E1E] flex flex-row-reverse">
-            AI<span className="text-green-500">Balance</span>
+      <main className="flex-1 p-10 md:px-16 relative">
+        {/* Header */}
+        <div className="flex justify-between items-end">
+          <div></div>
+          {/* Logo */}
+          <div className="text-3xl font-extrabold justify-between">
+            <h2 className="text-[#3CA464]">
+              Balance<span className="text-[#1E1E1E]">AI</span>
+            </h2>
           </div>
-        </header>
+        </div>
+
         <div className="px-8 py-6 max-w-2xl">
           <h1 className="text-2xl font-bold mt-8 mb-8 text-black">
             Por favor, ingresa los detalles del entrenamiento que realizaste.
           </h1>
           <WorkoutForm />
         </div>
-      </div>
-
+      </main>
     </div>
   );
 };

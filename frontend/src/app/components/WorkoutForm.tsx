@@ -35,24 +35,24 @@ export default function WorkoutForm() {
   };
 
   return (
-    <div className="p-4 flex flex-col gap-2 text-black">
+    <div className="flex flex-col gap-2 text-[#1E1E1E]">
       {/* Section Title */}
-      <h2 className="text-xl font-bold mb-4 text-green-700">Entrenamiento</h2>
+      <h2 className="text-xl font-bold mb-4 text-[#3CA464]">Entrenamiento</h2>
       {/* Exercise Input */}
       <div className="space-y-2">
-        <label className="block text-gray-700 font-bold mb-1">
+        <label className="block text-[#1E1E1E] font-bold mb-1">
           Ejercicio Realizado
         </label>
         <input
           name="exercise_name"
           placeholder="Ej: Sentadillas"
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#3CA464]"
         />
       </div>
       {/* Sets Input */}
       <div className="space-y-2">
-        <label className="block text-gray-700 font-bold mb-1">
+        <label className="block text-[#1E1E1E] font-bold mb-1">
           Numero de series
         </label>
         <input
@@ -60,12 +60,12 @@ export default function WorkoutForm() {
           type="number"
           placeholder="Ej: 3"
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#3CA464]"
         />
       </div>
       {/* Reps Input */}
       <div className="space-y-2">
-        <label className="block text-gray-700 font-bold mb-1">
+        <label className="block text-[#1E1E1E] font-bold mb-1">
           Numero de Repeticiones
         </label>
         <input
@@ -73,12 +73,12 @@ export default function WorkoutForm() {
           type="number"
           placeholder="Ej: 12"
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#3CA464]"
         />
       </div>
       {/* Weight Input */}
       <div className="space-y-2">
-        <label className="block text-gray-700 font-bold mb-1">
+        <label className="block text-[#1E1E1E] font-bold mb-1">
           Cantidad de Peso (en Kg)
         </label>
         <input
@@ -86,34 +86,36 @@ export default function WorkoutForm() {
           type="number"
           placeholder="Ej: 50"
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#3CA464]"
         />
       </div>
       {/* Date Input */}
       <div className="space-y-2">
-        <label className="block text-gray-700 font-bold mb-1">Fecha</label>
+        <label className="block text-[#1E1E1E] font-bold mb-1">Fecha</label>
         <input
           name="date"
           type="date"
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#3CA464]"
         />
       </div>
       {message && (
-        <p className="text-sm text-center mt-2 text-gray-700">{message}</p>
+        <p className="text-sm text-center mt-2 text-[#1E1E1E]">{message}</p>
       )}
       {/* Submit Button */}
       <div className="flex justify-center mt-5">
-
         <button
           onClick={handleSubmit}
           disabled={loading}
-          className="mt-2 px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors"
+          className="mt-2 px-6 py-3 bg-[#3CA464] text-white rounded-full cursor-pointer font-bold hover:bg-[#2e8c54] transition-colors"
         >
-          {loading ? "Registrando..." : "Registrar Entrenamiento"} 
+          {loading ? "Registrando..." : "Registrar Entrenamiento"}
         </button>
       </div>
-      <LoadingSpinner isOpen={loading} message="Registrando tu entrenamiento..." />
+      <LoadingSpinner
+        isOpen={loading}
+        message="Registrando tu entrenamiento..."
+      />
     </div>
   );
 }
