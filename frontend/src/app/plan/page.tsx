@@ -8,6 +8,7 @@ import { AuthContext } from "@/app/context/AuthContext";
 import ReactMarkdown from "react-markdown";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { PlanPDF } from "@/app/components/MyPlanPDF";
+import Image from "next/image";
 
 interface UserProfile {
   user_id: string;
@@ -81,7 +82,7 @@ export default function PlanPage() {
           <button
             onClick={handleGenerate}
             disabled={loading}
-            className="bg-[#3CA464] hover:bg-[#2e8c54] font-bold cursor-pointer  text-white py-3 px-6 rounded-3xl disabled:bg-gray-400 disabled:cursor-not-allowed mb-8"
+            className="bg-[#3CA464] hover:bg-[#2e8c54] font-bold cursor-pointer  text-white py-3 px-6 rounded-3xl disabled:bg-[#1E1E1E]/55 disabled:cursor-not-allowed mb-8"
           >
             {loading ? "Generando..." : "Generar Plan Semanal"}
           </button>
@@ -89,19 +90,33 @@ export default function PlanPage() {
           {/* Resultado del plan */}
           {plan && (
             <div className="text-left">
-              <div className="bg-[#FEFFEF] border border-yellow-100 p-6 text-black  max-h-[70vh] overflow-auto mb-8 w-full">
-                <ReactMarkdown>{plan}</ReactMarkdown>
+              {/* Contenedor externo */}
+              <div className="bg-[#FEFFEF] border border-[#1E1E1E]/55 font-lato font-medium text-lg shadow-lg rounded-2xl mb-8 w-full overflow-clip">
+                {/* Contenedor scroll */}
+                <div className="p-6 pr-6 text-[#1E1E1E]/55 max-h-[60vh] overflow-auto">
+                  <ReactMarkdown>{plan}</ReactMarkdown>
+                </div>
               </div>
 
-              <PDFDownloadLink
-                document={<PlanPDF content={plan} />}
-                fileName="plan_entrenamiento.pdf"
-                className="inline-block bg-green-500 text-white py-3 px-6 rounded-full hover:bg-green-600 transition-colors"
-              >
-                {({ loading }) =>
-                  loading ? "Preparando PDF..." : "Descargar como PDF"
-                }
-              </PDFDownloadLink>
+              <div className="flex justify-end w-full">
+                <PDFDownloadLink
+                  document={<PlanPDF content={plan} />}
+                  fileName="plan_entrenamiento.pdf"
+                  className="inline-block bg-[#3CA464] font-bold shadow-lg cursor-pointer hover:bg-[#2e8c54] text-white py-2 px-6 rounded-2xl transition-colors"
+                >
+                  {({ loading }) => (
+                    <div className="flex items-center gap-2">
+                      <Image
+                        src="/descargar.png"
+                        alt="Icono Descargar"
+                        width={20}
+                        height={20}
+                      />
+                      {loading ? "Preparando PDF..." : "Descargar"}
+                    </div>
+                  )}
+                </PDFDownloadLink>
+              </div>
             </div>
           )}
         </div>
