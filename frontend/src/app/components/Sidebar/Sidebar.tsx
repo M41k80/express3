@@ -64,7 +64,7 @@ const Sidebar = () => {
               />
             </div>
             <span className="hidden group-hover:inline text-[#1E1E1E] font-extrabold whitespace-nowrap">
-              Plan
+              Planes
             </span>
           </Link>
 
