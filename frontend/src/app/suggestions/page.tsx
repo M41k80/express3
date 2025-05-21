@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
@@ -6,56 +6,67 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const SuggestionsPage = () => {
-    const router = useRouter();
-    const [selectedCategory, setSelectedCategory] = useState<"training" | "nutrition" | null>(null)
+  const router = useRouter();
+  const [selectedCategory, setSelectedCategory] = useState<
+    "training" | "nutrition" | null
+  >(null);
 
-    // eslint-disable-next-line
-    const handleCategorySelect = (category: "training" | "nutrition") => {
-      setSelectedCategory(category === selectedCategory ? null : category)
-    }
+  // eslint-disable-next-line
+  const handleCategorySelect = (category: "training" | "nutrition") => {
+    setSelectedCategory(category === selectedCategory ? null : category);
+  };
 
-    const handleGoToWorkoutLog = () => {
-        router.push("/suggestions/workoutlog"); // Redirige a la página de plan
-      };
+  const handleGoToWorkoutLog = () => {
+    router.push("/suggestions/workoutlog"); // Redirige a la página de plan
+  };
 
-    const handleGoToNutrition = () => {
-      router.push('/suggestions/nutrition')  
-    };
+  const handleGoToNutrition = () => {
+    router.push("/suggestions/nutrition");
+  };
 
-    const handleSuggestionsResults = () => {
-        router.push('/suggestions/suggestionsresults')  
-      };
-  
-    
+  const handleSuggestionsResults = () => {
+    router.push("/suggestions/suggestionsresults");
+  };
+
   return (
-    <div className="flex min-h-screen pl-6">
-        <Sidebar />
-        <main className="flex-1 pl-20 text-black">
-        <header className="py-6 px-8">
-          <div className="text-2xl font-bold text-[#1E1E1E] flex flex-row-reverse">
-            AI<span className="text-green-500">Balance</span>
+    <div className="flex pl-6 min-h-screen">
+      <Sidebar />
+      <main className="flex-1 p-10 md:px-16 relative">
+        {/* Header */}
+        <div className="flex justify-between items-end">
+          <div></div>
+          {/* Logo */}
+          <div className="text-3xl font-extrabold justify-between">
+            <h2 className="text-[#3CA464]">
+              Balance<span className="text-[#1E1E1E]">AI</span>
+            </h2>
           </div>
-        </header>
+        </div>
 
-        <div className="px-8 py-6 max-w-3xl mx-auto text-center">
+        <div className="px-8 py-6 max-w-3xl mx-auto text-[#1E1E1E] text-center mt-2">
           {/* Main Heading */}
-          <h1 className="text-2xl font-bold mb-4">¿Te gustaría potenciar tu avance con sugerencias precisas?</h1>
+          <h1 className="text-2xl font-extrabold mb-4">
+            ¿Te gustaría potenciar tu avance con sugerencias precisas?
+          </h1>
 
           {/* Subheading */}
-          <p className="text-lg mb-10">
-            Coméntanos, <span className="text-green-500 font-medium">¿Qué hiciste hoy?</span>
+          <p className="text-2xl mb-10 font-extrabold">
+            Coméntanos,{" "}
+            <span className="text-[#3CA464] text-2xl font-extrabold">
+              ¿Qué hiciste hoy?
+            </span>
           </p>
 
           {/* Category Selection */}
-          <div className="flex flex-col gap-7 p-8 mb-10 ">
+          <div className="flex flex-col items-center  gap-7 p-8 mb-4 -mt-6 ">
             {/* Training Category */}
             <button
-            //   onClick={() => handleCategorySelect("training")}
-            onClick={handleGoToWorkoutLog}
-              className={`flex flex-col items-center justify-center p-6 rounded-2xl transition-all ${
+              //   onClick={() => handleCategorySelect("training")}
+              onClick={handleGoToWorkoutLog}
+              className={`flex flex-col items-center justify-center shadow-lg cursor-pointer py-6 px-20 rounded-4xl transition-transform duration-300 ease-in-out hover:scale-[1.03] ${
                 selectedCategory === "training"
-                  ? "bg-green-100 border-2 border-green-500"
-                  : "bg-[#FEFFEF] border border-yellow-100 hover:bg-green-50"
+                  ? "bg-green-100"
+                  : "bg-[#FEFFEF]"
               }`}
             >
               <div className="w-12 h-12 flex items-center justify-center mb-2">
@@ -64,37 +75,38 @@ const SuggestionsPage = () => {
                   alt="Entrenamiento"
                   width={32}
                   height={32}
-                  className="w-8 h-8 text-green-600"
+                  className="w-10 h-10 text-[#3CA464] object-cover"
                 />
               </div>
-              <span className="font-medium">Entrenamiento</span>
+              <span className="font-bold text-xl">Entrenamiento</span>
             </button>
 
             {/* Nutrition Category */}
             <button
-            //   onClick={() => handleCategorySelect("nutrition")}
-            onClick={handleGoToNutrition}
-              className={`flex flex-col items-center justify-center p-6 rounded-2xl transition-all ${
+              //   onClick={() => handleCategorySelect("nutrition")}
+              onClick={handleGoToNutrition}
+              className={`flex flex-col items-center cursor-pointer shadow-lg justify-center py-6 px-20 rounded-4xl transition-transform duration-300 ease-in-out hover:scale-[1.03] ${
                 selectedCategory === "nutrition"
-                  ? "bg-green-100 border-2 border-green-500"
-                  : "bg-[#FEFFEF] border border-yellow-100 hover:bg-green-50"
+                  ? "bg-green-100"
+                  : "bg-[#FEFFEF]"
               }`}
             >
               <div className="w-12 h-12 flex items-center justify-center mb-2">
-                <Image src="/food-icon.svg"
+                <Image
+                  src="/food-icon.svg"
                   alt="Entrenamiento"
                   width={32}
                   height={32}
-                  className="w-8 h-8 text-green-600" />
+                  className="w-10 h-10 text-[#3CA464] object-cover"
+                />
               </div>
-              <span className="font-medium">Alimentación</span>
+              <span className="font-bold text-xl">Alimentación</span>
             </button>
           </div>
 
           {/* Get Suggestions Button */}
           <button
-            className='px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors'
-            
+            className="px-8 py-3 bg-[#3CA464] font-bold shadow-lg cursor-pointer  text-white rounded-full hover:bg-[#2e8c54] transition-colors"
             onClick={handleSuggestionsResults}
           >
             Obtener Sugerencias
@@ -103,6 +115,6 @@ const SuggestionsPage = () => {
       </main>
     </div>
   );
-}
+};
 
 export default SuggestionsPage;
