@@ -35,14 +35,14 @@ export default function WorkoutHistory() {
     }, [userId]);
 
     return (
-        <div className="mt-4">
-            <h2 className="text-xl font-bold mb-4 text-gray-700">
+        <div className="mb-10">
+            <h2 className="text-xl font-extrabold mb-4 text-[#1E1E1E]">
                 Historial de Entrenamientos
             </h2>
             {error && <p className="text-red-500 mt-2">{error}</p>}
-            <ul className="overflow-auto h-[20vh] mt-2 space-y-2 bg-[#FEFFEF] list-disc border pl-8 pt-4 pb-4 rounded-lg text-gray-700 ">
+            <ul className="overflow-auto h-[42vh] mt-2 space-y-2 bg-[#FEFFEF] shadow-lg list-disc border pl-8 pt-4 pb-4 rounded-2xl font-lato font-semibold text-[#1E1E1E]/55 ">
                 {history.map((item, i) => (
-                    <li key={i} className="text-gray-900">
+                    <li key={i} className="text-[#1E1E1E]/55">
                         <strong>{item.date}</strong>: {item.exercise_name} – {item.sets}×
                         {item.reps} @ {item.weight_kg} kg
                     </li>

@@ -29,30 +29,39 @@ export default function MealHistory() {
 
   return (
     <div className="mt-4 rounded-xl ">
-      <h2 className="text-xl font-bold mb-4 text-gray-700">
+      <h2 className="text-xl font-extrabold mb-4 text-[#1E1E1E]">
         Historial de comidas
       </h2>
       {loading ? (
-        <p className="text-center text-gray-700">Cargando...</p>
+        <p className="text-center text-[#1E1E1E]">Cargando...</p>
       ) : meals.length === 0 ? (
-        <p className="text-center text-gray-700">No hay comidas registradas.</p>
+        <p className="text-center text-[#1E1E1E]">
+          No hay comidas registradas.
+        </p>
       ) : (
-        <ul className="overflow-auto h-[20vh] mt-2 space-y-2 bg-[#FEFFEF] list-disc border pl-8 pt-4 pb-4 rounded-lg text-gray-700">
-          {meals.map((meal, index) => (
-            <li key={index} className="text-gray-900">
-              <p className="text-sm">
-                {(meal as { date: string; meal_type: string }).date} -{" "}
-                <strong>
-                  {(meal as { date: string; meal_type: string }).meal_type}
-                </strong>
-              </p>
-              <p className="text-sm">{(meal as { foods: string }).foods}</p>
-              <p className="text-sm">
-                Agua: {(meal as { water: number }).water} L
-              </p>
-            </li>
-          ))}
-        </ul>
+        <div className="text-left">
+          <div className="bg-[#FEFFEF] border border-[#1E1E1E]/55 font-lato font-medium text-xl shadow-lg rounded-2xl mb-8 w-full overflow-clip">
+            <ul className="p-6 pr-6 text-[#1E1E1E]/55 max-h-[40vh] overflow-auto list-disc pl-10 leading-relaxed">
+              {meals.map((meal, index) => (
+                <li
+                  key={index}
+                  className="text-[#1E1E1E]/55 font-semibold font-lato"
+                >
+                  <p className="text-base">
+                    {(meal as { date: string; meal_type: string }).date} -{" "}
+                    <strong>
+                      {(meal as { date: string; meal_type: string }).meal_type}
+                    </strong>
+                  </p>
+                  <p className="text-base">{(meal as { foods: string }).foods}</p>
+                  <p className="text-base">
+                    Agua: {(meal as { water: number }).water} L
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       )}
     </div>
   );

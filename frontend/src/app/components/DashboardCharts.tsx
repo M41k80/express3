@@ -71,18 +71,18 @@ const DashboardCharts = ({
   return (
     <div className="grid gap-4 md:grid-cols-2">
       <div>
-        <h2 className="text-xl font-bold mb-4 text-gray-900">
+        <h2 className="text-xl font-extrabold mb-4 text-[#1E1E1E]">
           Progreso de Peso Corporal
         </h2>
-        <div className="p-6 bg-[#FEFFEF] border rounded-lg shadow-lg text-gray-700">
+        <div className="p-6 bg-[#FEFFEF] border rounded-2xl shadow-lg text-[#1E1E1E]/55">
           <Line data={lineChartData} options={{ responsive: true }} />
         </div>
       </div>
       <div>
-        <h2 className="text-xl font-bold mb-4 text-gray-900">
+        <h2 className="text-xl font-extrabold mb-4 text-[#1E1E1E]">
           Repeticiones por Ejercicio
         </h2>
-        <div className="p-6 bg-[#FEFFEF] border rounded-lg shadow-lg text-gray-700">
+        <div className="p-6 bg-[#FEFFEF] border rounded-2xl shadow-lg text-[#1E1E1E]/55">
           <Bar data={barChartData} options={{ responsive: true }} />
         </div>
       </div>

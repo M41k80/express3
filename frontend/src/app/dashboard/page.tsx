@@ -73,7 +73,18 @@ export default function DashboardPage() {
   return (
     <div className="flex pl-6 min-h-screen">
       <Sidebar />
-      <div className="w-screen">
+      <main className="flex-1 p-10 md:px-16 relative">
+                {/* Header */}
+        <div className="flex justify-between items-end">
+          <div></div>
+          {/* Logo */}
+          <div className="text-3xl font-extrabold justify-between">
+            <h2 className="text-[#3CA464]">
+              Balance<span className="text-[#1E1E1E]">AI</span>
+            </h2>
+          </div>
+        </div>
+      <div>
         <div className="mt-2 p-6">
           {hasWorkouts && hasWeights ? (
             <DashboardCharts
@@ -81,7 +92,7 @@ export default function DashboardPage() {
               weightData={weightData}
             />
           ) : (
-            <p className="text-gray-600">
+            <p className="text-[#1E1E1E]/55">
               {!hasWorkouts
                 ? "No hay datos de entrenamiento para graficar."
                 : "No hay historial de peso para graficar."}
@@ -119,6 +130,7 @@ export default function DashboardPage() {
           </div> */}
         </div>
       </div>
+      </main>
     </div>
   );
 }
