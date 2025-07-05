@@ -127,7 +127,7 @@ Desarrollar una plataforma inteligente que combine datos de salud y preferencias
       </a>
     </td>
     <td align="center">
-      <a href="https://www.linkedin.com/in/christian-aranguiz/>
+      <a href="https://www.linkedin.com/in/christian-aranguiz/">
         <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
       </a>
     </td>
