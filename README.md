@@ -119,7 +119,6 @@ Desarrollar una plataforma inteligente que combine datos de salud y preferencias
     <td align="center">Backend & AI</td>
     <td align="center">Backend Developer</td>
     <td align="center">UX/UI</td>
-
   </tr>
   <tr>
     <td align="center">
