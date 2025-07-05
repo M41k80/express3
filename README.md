@@ -103,6 +103,61 @@ Desarrollar una plataforma inteligente que combine datos de salud y preferencias
 
 ---
 
+## 🤝 Nuestro Equipo
+
+<table align="center">
+  <tr>
+    <td align="center">Luis Angel Quispe </td>
+    <td align="center">Christian Aranguiz </td>
+    <td align="center">Jose Magdiel Perez </td>
+    <td align="center">Agata Morales Celestino </td>
+    <td align="center">Matias Ron Ares </td>
+  </tr>
+  <tr>
+    <td align="center">PM & Frontend Developer & UX/UI</td>
+    <td align="center">Frontend Developer</td>
+    <td align="center">Backend & AI</td>
+    <td align="center">Backend Developer</td>
+    <td align="center">UX/UI</td>
+
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/luis-angel-quispe/">
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/christian-aranguiz/>
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/jose-magdiel-mora-perez-0384492b9/">
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/agata-morales/">
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+      </a>
+    </td>
+        <td align="center">
+      <a href="https://www.linkedin.com/in/mat%C3%ADas-ron-ares-a4b09819a/">
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+      </a>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 🔗 Enlaces del Proyecto
+
+[![Sitio Web](https://img.shields.io/website?url=https%3A%2F%2Fmaily.vercel.app&style=for-the-badge)](https://express3.vercel.app/) [![Figma](https://img.shields.io/badge/Figma-Design-9C55F7?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/44hJ5JA2JttVOnmcTGeFFD/BalanceIA?node-id=0-1&t=dUGwEkSe8444373I-1)
+
+---
+
 ## ⚙️ Instalación Local
 
 ### 🔹 Clonar el repositorio
@@ -154,7 +209,4 @@ Abre un Pull Request o crea una nueva issue para hacernos saber tus aportes.
 
 ## 📄 Licencia
 
-MIT © BalanceAI  
-
-
-
+MIT © BalanceAI
