@@ -153,7 +153,7 @@ Desarrollar una plataforma inteligente que combine datos de salud y preferencias
 
 ## 🔗 Enlaces del Proyecto
 
-[![Sitio Web](https://img.shields.io/website?url=https%3A%2F%2Fmaily.vercel.app&style=for-the-badge)](https://express3.vercel.app/) [![Figma](https://img.shields.io/badge/Figma-Design-9C55F7?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/44hJ5JA2JttVOnmcTGeFFD/BalanceIA?node-id=0-1&t=dUGwEkSe8444373I-1)
+[![Sitio Web](https://img.shields.io/website?url=https%3A%2F%2Fmaily.vercel.app&style=for-the-badge)](https://balanceia.vercel.app/) [![Figma](https://img.shields.io/badge/Figma-Design-9C55F7?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/44hJ5JA2JttVOnmcTGeFFD/BalanceIA?node-id=0-1&t=dUGwEkSe8444373I-1)
 
 ---
 
